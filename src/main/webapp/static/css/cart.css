@@ -1,0 +1,148 @@
+.ul_cart li{
+ 
+    list-style: none;
+  }
+  .ul_cart {
+      display: inline-block;
+      list-style: none;
+     
+    }
+    .imgphone{
+      font-size: 18px;
+    }
+    .imgphone ul {
+      background: white;
+      list-style-type: none;
+    overflow: hidden;
+    width: 100%;
+    }
+    .imgphone li {
+      color: black;
+      float: left;
+    }
+    .ul_cart ul li{
+   display: inline-block;
+    }
+    .apdung {
+      background-color: #58257b; /* màu của Quản trị mạng ^^ */
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .nhapma {
+      background-color: cadetblue; /* màu của Quản trị mạng ^^ */
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .thanhtoan {
+      background-color: blueviolet; /* màu của Quản trị mạng ^^ */
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .than{
+      background-color: darkgray;
+      padding-bottom: 10px;
+    }
+    .buttons_added {
+      opacity:1;
+      display:inline-block;
+      display:-ms-inline-flexbox;
+      display:inline-flex;
+      white-space:nowrap;
+      vertical-align:top;
+      border: 1px solid blue;
+  
+  }
+  
+  #cong{
+    background-color: white;
+    border: 0px solid white;
+  }
+  
+  button.is-form:hover {
+    cursor: pointer;
+    border: none;
+    color: white;
+    }
+  input:focus {     
+      outline: 0;     
+      outline-style: none;     
+      outline-width: 0; 
+  }
+  button:active {
+    outline: none;
+    border: none;
+    }
+  /* #cong:active {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+  }  */
+  #tru{
+    background-color: white;
+    border: 0px solid white;
+  }
+  #inc{
+    background-color: white;
+    border-left: 0px;
+    border-right: 0px;
+  }
+  .input-qty {
+      background-color:#fff;
+      height:2.2rem;
+      text-align:center;
+      font-size:1rem;
+      display:inline-block;
+      vertical-align:top;
+      margin:0;
+      border-top:1px solid #ddd;
+      border-bottom:1px solid #ddd;
+      border-left:0;
+      border-right:0;
+      padding:0;
+      
+  }
+  .input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
+      -webkit-appearance:none;
+      margin:0;
+  }
+  .gh1{
+    background-color: white;
+    padding: 15px;
+    border-radius: 3px;
+    height: 120px;
+  }
+  .gh2{
+    text-align: center;
+    background-color: white;
+    height: 135px;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .gh3{
+    background-color: white;
+    height: 250px;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 15px;
+  }
+  .t{
+    text-align: center;
+    margin: auto;
+  }
