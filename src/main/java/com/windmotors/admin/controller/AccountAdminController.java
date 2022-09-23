@@ -54,18 +54,21 @@ public class AccountAdminController {
 	public String login(Model model) {
 		Cookie ckid = cookie.read("userid");
 		Cookie ckpw = cookie.read("pass");
+		//Cookie ckemail = cookie.read("useremail");
 		if (ckid != null) {
 			String uid = ckid.getValue();
 			String pwd = ckpw.getValue();
-
+			//String email=ckemail.getValue();
 			model.addAttribute("uid", uid);
 			model.addAttribute("pwd", pwd);
+			//model.addAttribute("email",email);
 		}
 		return "admin/login/login";
 	}
 	@PostMapping("/admin/login")
 	public String login(Model model,
 			@RequestParam("id") String id,
+			//@RequestParam("email") String email,
 			@RequestParam("pw") String pw,
 			@RequestParam(value = "rm", defaultValue = "false") boolean rm) {
 		User user = dao.findById(id);
@@ -74,21 +77,23 @@ public class AccountAdminController {
 			model.addAttribute("message", "Sai tài khoản hoặc mật khẩu");
 		} else if (!pw.equals(user.getPassword())) {
 			model.addAttribute("message", "Sai mật khẩu");
-			
 		} else if (!user.getActivated()) {
 			model.addAttribute("message", "Tài khoản chưa được kích hoạt!");
-		}else if (!user.getAdmin()) {
+		}else if (user.getAdmin()!=1) {
 			model.addAttribute("message", "Không có quyền!");
-			
+		/*} else if(!email.equals(user.getEmail())) {
+			model.addAttribute("message","Nhập sai email!");*/
 		} else {// thanh cong
 			model.addAttribute("message", "Login successfully!");
 			session.setAttribute("user", user);
 			// ghi nho tk
 			if (rm == true) {
 				cookie.create("userid", user.getId(), 30);
+				//cookie.create("useremail", user.getEmail(), 30);
 				cookie.create("pass", user.getPassword(), 30);
 			} else {
 				cookie.delete("userid");
+				//cookie.delete("email");
 				cookie.delete("pass");
 			}
 			//Quay lai trang bao ve(neu co)

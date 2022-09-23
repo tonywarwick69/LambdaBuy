@@ -69,7 +69,7 @@
 					<h4 style="font-weight: 600">Thay đổi mật khẩu</h4>
 					<hr>
 					<h4 class="label label-success">${message}</h4>
-					<form:form action="/account/change" method="post" modelAttribute="form" enctype="multipart/form-data">
+					<form:form action="/account/recover" method="post" modelAttribute="form" enctype="multipart/form-data">
 						<br>
 						<br/>
 						<div class="row">
@@ -78,17 +78,7 @@
 							</div>
 							<div class="col-sm-8">
 								<p>
-									<form:input style="width: 90%;" path="id" class="form-control" readonly="true" />
-								</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4">
-								<p>Mật khẩu hiện tại:</p>
-							</div>
-							<div class="col-sm-8">
-								<p>
-									<input name="pw" type="password" value="${user.password}" class="form-control" style="width: 90%;" required="required" pattern=".{6,}" title="Mật khẩu phải từ 6 ký tự trở lên"/>
+									<input name="id" type="text" style="width: 90%;" class="form-control" required="required" />
 								</p>
 							</div>
 						</div>

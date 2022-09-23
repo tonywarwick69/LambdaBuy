@@ -33,6 +33,22 @@
 				"configurationType": "MANUAL",
 				"home": "mysql_client",
 				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-183076db444-5780492bbc6bfa0b": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "127.0.0.1",
+				"port": "3306",
+				"url": "jdbc:mysql://127.0.0.1:3306/",
+				"configurationType": "MANUAL",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}

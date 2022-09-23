@@ -55,12 +55,13 @@ public class AccountController {
 	public String login(Model model) {
 		Cookie ckid = cookie.read("userid");
 		Cookie ckpw = cookie.read("pass");
-		if (ckid != null) { //nếu userid khác null
+		if (ckid != null ) {
 			String uid = ckid.getValue();
 			String pwd = ckpw.getValue();
 
 			model.addAttribute("uid", uid);
 			model.addAttribute("pwd", pwd);
+
 		}
 		return "account/login";
 	}
@@ -78,7 +79,7 @@ public class AccountController {
 			// nếu đúng username, mật khẩu => check kích hoạt chưa ?
 		} else if (!user.getActivated()) {
 			model.addAttribute("message", "Tài khoản chưa được kích hoạt!");
-		}else if (user.getAdmin()) {
+		}else if (user.getAdmin()==1) {
 			model.addAttribute("message", "Bạn không có quyền!");
 		} else {// đăng nhập thành công
 			model.addAttribute("message", "Đăng nhập thành công!");
@@ -145,7 +146,7 @@ public class AccountController {
 			user.setPhoto(f.getName());
 		}
 		user.setActivated(false);
-		user.setAdmin(false);
+		user.setAdmin(2);
 		dao.create(user); //insert vào database
 		model.addAttribute("message", "Đăng kí thành công.Vui lòng kiểm tra email để kích hoạt tài khoản!");
 
@@ -189,7 +190,7 @@ public class AccountController {
 			String from = "windmotor2022@gmail.com";
 			String to = user.getEmail();
 			String subject = "Forgot Password!";
-			String body = "Your password is: " + user.getPassword();
+			String body = "<a href='http://localhost:8080/account/recover'>Bấm vào đây để thiết lập mật khẩu mới</a>";//"Your password is: " + user.getPassword();
 			MailInfo mail = new MailInfo(from, to, subject, body);
 			mailer.send(mail);
 
@@ -206,7 +207,7 @@ public class AccountController {
 
 		return "account/change";
 	}
-
+//
 	@PostMapping("/account/change")
 	public String change(Model model,
 			@ModelAttribute("form") User users,
@@ -219,9 +220,10 @@ public class AccountController {
 		} else {
 			User user = dao.findById(id);
 			if (user == null) {
-				model.addAttribute("message", "Sai tên tài khoản hoặc mật khẩu");
-			} else if (!pw.equals(user.getPassword())) {
-				model.addAttribute("message", "Sai mật khẩu!");
+				model.addAttribute("message", "Sai tên tài khoản hoặc mật khẩu!");
+				  } else if (!pw.equals(user.getPassword())) { model.addAttribute("message",
+				  "Sai mật khẩu!");
+				 
 			}else if (pw1.isEmpty() && pw2.isEmpty()) {
 				model.addAttribute("message", "Vui lòng điền thông tin mật khẩu mới!");
 			}else {
@@ -232,6 +234,38 @@ public class AccountController {
 			}
 		}
 		return "account/change";
+	}
+	
+	@GetMapping("/account/recover")
+	public String recover(Model model) {
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("form", user);
+
+		return "account/recover";
+	}
+//
+	@PostMapping("/account/recover")
+	public String recover(Model model,
+			@ModelAttribute("form") User users,
+			@RequestParam("id") String id, 
+			@RequestParam("pw1") String pw1,
+			@RequestParam("pw2") String pw2) {
+		if (!pw1.equals(pw2)) {
+			model.addAttribute("message", "Mật khẩu không khớp!");
+		} else {
+			User user = dao.findById(id);
+			if (user == null) {
+				model.addAttribute("message", "Sai tên tài khoản hoặc mật khẩu");
+			}else if (pw1.isEmpty() && pw2.isEmpty()) {
+				model.addAttribute("message", "Vui lòng điền thông tin mật khẩu mới!");
+			}else {
+				user.setPassword(pw1);
+				dao.update(user);
+
+				model.addAttribute("message", "Thay đổi mật khẩu thành công!");
+			}
+		}
+		return "account/recover";
 	}
 
 	@GetMapping("/account/edit")

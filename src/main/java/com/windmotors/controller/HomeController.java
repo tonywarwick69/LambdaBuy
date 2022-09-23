@@ -18,7 +18,7 @@ public class HomeController {
 	@Autowired
 	ProductDAO pdao;
 	
-	@RequestMapping(value = {"/", "/home"})
+	@RequestMapping(value = {"/", "/home","/home/addProduct"})
 	public String index(Model model) {
 		List<Product> list2 = pdao.findBySpecial(4);
 		model.addAttribute("list", list2);

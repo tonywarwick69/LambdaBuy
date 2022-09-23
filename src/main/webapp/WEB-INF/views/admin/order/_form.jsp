@@ -35,9 +35,10 @@
 			<div>
 				<label>Trạng thái: </label>
 				<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="1" checked="checked" /> Chưa giao hàng </span>
-				<span class="btn btn-primary" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="2"  /> Đang giao hàng </span>
-				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="3"  />  Đã giao hàng </span>
-				<span class="btn btn-danger" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="4"  />  Hủy đơn hàng </span>
+				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="2"  />  Đã thanh toán </span>
+				<span class="btn btn-primary" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="3"  /> Đang giao hàng </span>
+				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="4"  />  Đã giao hàng và Thanh toán </span>
+				<span class="btn btn-danger" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="5"  />  Hủy đơn hàng </span>
 			</div>
 			<br/>
 			<div class="form-group">

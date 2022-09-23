@@ -8,7 +8,7 @@
 		<form action="/account/login" method="post">
 			<div class="form-group">
 				<label>Tên đăng nhập:</label> <input name="id" class="form-control"
-					value="${uid}" />
+					 value="${uid}" />
 			</div>
 			<div class="form-group">
 				<label>Mật khẩu:</label> <input name="pw" type="password"

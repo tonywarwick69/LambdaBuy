@@ -10,10 +10,10 @@
 	<img src="https://hoanghamobile.com/Uploads/Originals/2020/12/03/202012031548027973_xonggggg.gif" alt="" width="100%">
 </header>
 
-<nav id="navbar" class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #F8F8FF; border-bottom: 1px solid gainsboro;">
+<nav id="navbar" class="navbar navbar-expand-sm navbar-dark sticky-top" >
 	<div class="container ">
-		<div class="row" style="padding: 20px 15px 12px;">
-			<div class="col-sm-4" style="margin-top: -10px; padding-left: 30px;">
+		<div class="row" style="padding: 10px 5px 6px;">
+			<div class="col-sm-4" style="margin-top: -10px; padding-left: 0px;">
 				<a href="/"><img src="/static/images/logo1.png" alt="" width="60%"></a>
 			</div>
 			<div class="col-sm-4" style="padding-right: 15px;">
@@ -103,13 +103,13 @@
 						</div>
 						<!-- /Cart hover -->
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-3">
 						<div class="header-menu">
 							<i class="glyphicon glyphicon-heart" style="font-size: 30px; padding: 0px 5px 0px 5x"></i> 
 								<a class="splike" href="/product/favo" style="color: #474c51"> Sản phẩm đã thích</a>
 						</div>
 					</div>
-					<div class="col-sm-6" ><div class="header-menu"><i class="glyphicon glyphicon-user" style="font-size: 30px; padding: 0px 5px 0px 5x"><a href="/admin" style="color: #474c51" >Admin Page</a></i></div></div>
+					<div class="col-sm-3" ><div class="header-menu"><i class="glyphicon glyphicon-user" style="font-size: 30px; padding: 0px 5px 0px 5x"><a href="/admin" style="color: #474c51" >Admin Page</a></i></div></div>
 				</div>
 			</div>
 		</div>
@@ -123,10 +123,21 @@
 </style>
 
 <style>
+.navbar{
+	
+	
+	border-bottom: 1px solid gainsboro;
+	width:100%;
+}
+.container{
+	width:100%;
+	
+}
 .sticky {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	background-color:white;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
@@ -182,6 +193,7 @@
     font-size: 18px;
     font-weight: 500;
 }
+
 </style>
 
 <script>

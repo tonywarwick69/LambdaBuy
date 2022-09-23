@@ -5,7 +5,7 @@ import java.util.List;
 import com.windmotors.entity.User;
 
 public interface UserDAO {
-	User findById(String id);
+	User findById(String email);
 
 	List<User> findAll();
 

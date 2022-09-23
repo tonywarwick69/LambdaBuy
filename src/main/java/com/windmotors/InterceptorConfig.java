@@ -29,6 +29,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 				"/order/list",
 				"/order/items",
 				"/order/detail",
+				"/cart/view",
+				"/home/addProduct",
+				"/cart/add",
 				"/account/order/**");
 	}
 }

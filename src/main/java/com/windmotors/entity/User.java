@@ -32,7 +32,7 @@ public class User {
 	String email;
 	String photo;
 	Boolean activated;
-	Boolean admin;
+	int admin;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
@@ -94,11 +94,11 @@ public class User {
 		this.activated = activated;
 	}
 
-	public Boolean getAdmin() {
+	public int getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
+	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
 

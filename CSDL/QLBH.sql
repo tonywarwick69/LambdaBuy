@@ -8,14 +8,21 @@ USE `QLBH`;
 /* SET QUOTED_IDENTIFIER ON */
  
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE `Users`(
+	`Id` nvarchar(50) NOT NULL primary key,
+	`Password` nvarchar(50) NOT NULL,
+	`Fullname` nvarchar(50) NOT NULL,
+	`Telephone` int NOT NULL,
+	`Email` nvarchar(50) NOT NULL,
+	`Photo` nvarchar(50) NOT NULL,
+	`Activated` Tinyint NOT NULL,
+	`Admin` Tinyint NOT NULL
+);
+/*Adminccount : Admin = 1 ; UserAccount : Admin=2 */
 CREATE TABLE `Categories`(
-	`Id` int AUTO_INCREMENT NOT NULL,
+	`Id` int AUTO_INCREMENT NOT NULL primary key,
 	`Name` nvarchar(50) NOT NULL,
-	`NameVN` Longtext NOT NULL,
-PRIMARY KEY 
-(
-	`Id` ASC
-) 
+	`NameVN` Longtext NOT NULL
 );
 /* SQLINES DEMO *** le OrderDetails    Script Date: 20/05/2022 5:42:17 CH ******/
 /* SET ANSI_NULLS ON */
@@ -23,61 +30,20 @@ PRIMARY KEY
 /* SET QUOTED_IDENTIFIER ON */
  
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE TABLE `OrderDetails`(
-	`Id` int AUTO_INCREMENT NOT NULL,
-	`OrderId` int NOT NULL,
-	`ProductId` int NOT NULL,
-	`UnitPrice` Double NOT NULL,
-	`Quantity` int NOT NULL,
-	`Discount` Double NOT NULL,
-PRIMARY KEY 
-(
-	`Id` ASC
-) 
-);
-/* SQLINES DEMO *** le Orders    Script Date: 20/05/2022 5:42:17 CH ******/
-/* SET ANSI_NULLS ON */
- 
-/* SET QUOTED_IDENTIFIER ON */
- 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE TABLE `Orders`(
-	`Id` int AUTO_INCREMENT NOT NULL,
-	`UserId` nvarchar(20) NOT NULL,
-	`OrderDate` datetime(3) NOT NULL,
-	`Telephone` int NOT NULL,
-	`Address` nvarchar(60) NOT NULL,
-	`Amount` Double NOT NULL,
-	`Description` nvarchar(1000) NULL,
-	`Status` int NULL,
-PRIMARY KEY 
-(
-	`Id` ASC
-) 
-);
-/* SQLINES DEMO *** le Products    Script Date: 20/05/2022 5:42:17 CH ******/
-/* SET ANSI_NULLS ON */
- 
-/* SET QUOTED_IDENTIFIER ON */
- 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE `Products`(
-	`Id` int AUTO_INCREMENT NOT NULL,
-	`Name` nvarchar(60) NOT NULL,
-	`UnitPrice` Double NOT NULL,
-	`Image` nvarchar(50) NOT NULL,
-	`ProductDate` date NOT NULL,
-	`Available` Tinyint NOT NULL,
-	`CategoryId` int NOT NULL,
-	`Quantity` int NOT NULL,
-	`Description` Longtext NULL,
-	`Discount` Double NOT NULL,
-	`ViewCount` int NOT NULL,
-	`Special` Tinyint NOT NULL,
-PRIMARY KEY 
-(
-	`Id` ASC
-) 
+	`Id` int AUTO_INCREMENT NOT NULL primary key,
+	`Name` nvarchar(60),
+	`UnitPrice` Double,
+	`Image` nvarchar(50),
+	`ProductDate` date,
+	`Available` Tinyint,
+	`CategoryId` int,
+	`Quantity` int,
+	`Description` Longtext,
+	`Discount` Double,
+	`ViewCount` int,
+	`Special` Tinyint,
+    FOREIGN KEY (CategoryId) REFERENCES Categories(Id)
 );
 /* SQLINES DEMO *** le Users    Script Date: 20/05/2022 5:42:17 CH ******/
 /* SET ANSI_NULLS ON */
@@ -85,20 +51,42 @@ PRIMARY KEY
 /* SET QUOTED_IDENTIFIER ON */
  
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE TABLE `Users`(
-	`Id` nvarchar(20) NOT NULL,
-	`Password` nvarchar(50) NOT NULL,
-	`Fullname` nvarchar(50) NOT NULL,
+
+CREATE TABLE `Orders`(
+	`Id` int AUTO_INCREMENT NOT NULL primary key,
+	`UserId` nvarchar(20) NOT NULL,
+	`OrderDate` datetime(3) NOT NULL,
 	`Telephone` int NOT NULL,
-	`Email` nvarchar(50) NOT NULL,
-	`Photo` nvarchar(50) NOT NULL,
-	`Activated` Tinyint NOT NULL,
-	`Admin` Tinyint NOT NULL,
-PRIMARY KEY 
-(
-	`Id` ASC
-) 
+	`Address` nvarchar(60) NOT NULL,
+	`Amount` Double NOT NULL,
+	`Description` nvarchar(1000) NULL,
+	`Status` int NULL,
+    FOREIGN KEY (UserId) REFERENCES Users(Id)
 );
+/* SQLINES DEMO *** le Products    Script Date: 20/05/2022 5:42:17 CH ******/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE `OrderDetails`(
+	`Id` int AUTO_INCREMENT NOT NULL primary key,
+	`OrderId` int NOT NULL,
+	`ProductId` int NOT NULL,
+	`UnitPrice` Double NOT NULL,
+	`Quantity` int NOT NULL,
+	`Discount` Double NOT NULL,
+     FOREIGN KEY (OrderId) REFERENCES Orders(Id),
+     FOREIGN KEY (ProductId) REFERENCES Products(Id)
+);
+/* SQLINES DEMO *** le Orders    Script Date: 20/05/2022 5:42:17 CH ******/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+
+
 INSERT Categories (Id, Name, NameVN) VALUES (1, N' XE MÁY VÀ XE Ô TÔ ', N'HONDA');
 INSERT Categories (Id, Name, NameVN) VALUES (2, N' XE MÁY', N'YAMAHA');
 INSERT Categories (Id, Name, NameVN) VALUES (3, N'XE Ô TÔ VÀ XE TẢI', N'FORD');
@@ -113,17 +101,16 @@ INSERT Categories (Id, Name, NameVN) VALUES (12, N'PHỤ KIỆN', N'YAMAHA PHỤ
 INSERT Categories (Id, Name, NameVN) VALUES (13, N'PHỤ KIỆN', N'PHỤ KIỆN');
 
 
-INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (1, 1, 2, 21700000, 1, 0);
-INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (2, 2, 5, 881695000, 1, 0.1);
-INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (3, 3, 7, 1790000000, 1, 0.05);
-INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (4, 4, 4, 17859273, 1, 0);
+#INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (1, 1, 2, 21700000, 1, 0);
+#INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (2, 2, 5, 881695000, 1, 0.1);
+#INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (3, 3, 7, 1790000000, 1, 0.05);
+#INSERT OrderDetails (Id, OrderId, ProductId, UnitPrice, Quantity, Discount) VALUES (4, 4, 4, 17859273, 1, 0);
 
 
-INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (1, N'KhangDong', CAST(N'2022-05-14T00:00:00.000' AS DateTime), 964772094, N'Tân Bình', 21700000, N'<p>Trước khi giao gọi điện thoại</p>
-', 3);
-INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (2, N'KhangDong', CAST(N'2022-05-20T00:00:00.000' AS DateTime), 964772094, N'Tân Bình', 793525500, N'Hello World', 1);
-INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (3, N'Longdz', CAST(N'2022-05-20T00:00:00.000' AS DateTime), 332467724, N'Go Vap', 1700500000, N'mua xe Audi', 1);
-INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (4, N'huynhhuong', CAST(N'2022-03-11T00:00:00.000' AS DateTime), 1234567890, N'Phu Nhuan', 17859273, N'', 1);
+#INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (1, N'admin', CAST(N'2022-05-14T00:00:00.000' AS DateTime), 964772094, N'Tân Bình', 21700000, N'<p>Trước khi giao gọi điện thoại</p>', 3);
+#INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (2, N'admin', CAST(N'2022-05-20T00:00:00.000' AS DateTime), 964772094, N'Tân Bình', 793525500, N'Hello World', 1);
+#INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (3, N'Longdz', CAST(N'2022-05-20T00:00:00.000' AS DateTime), 332467724, N'Go Vap', 1700500000, N'mua xe Audi', 1);
+#INSERT Orders (Id, UserId, OrderDate, Telephone, Address, Amount, Description, Status) VALUES (4, N'huynhhuong', CAST(N'2022-03-11T00:00:00.000' AS DateTime), 1234567890, N'Phu Nhuan', 17859273, N'', 1);
 
 
 INSERT Products (Id, Name, UnitPrice, Image, ProductDate, Available, CategoryId, Quantity, Description, Discount, ViewCount, Special) VALUES (1, N'Air Blade 125/150', 41324727, N'1.png', CAST(N'2022-10-04' AS Date), 1, 1, 20, N'<h1><strong><span style="color:#c0392b">THIẾT KẾ</span></strong></h1>
@@ -1988,9 +1975,9 @@ INSERT Products (Id, Name, UnitPrice, Image, ProductDate, Available, CategoryId,
 ', 0, 0, 1);
 
 INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'admin', N'123456', N'Đồng Đức Khang', 964772094, N'duc.khang165@gmail.com', N'30714389_173138760010464_1235140372791820288_n.jpg', 1, 1);
-INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'2', N'123456', N'Nguyễn Văn Hùng', 977255117, N'hung@gmail.com', N'luan.jpg', 1, 0);
-INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'huynhhuong', N'123456', N'Huynh Huong', 1234567890, N'lonzomcf@yahoo.com.vn', N'user.png', 1, 0);
-INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'Longdz', N'123456', N'Long Hoang', 332467724, N'long@gmail.com', N'30714389_173138760010464_1235140372791820288_n.jpg', 1, 0);
+INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'hung123', N'123456', N'Nguyễn Văn Hùng', 977255117, N'hung@gmail.com', N'luan.jpg', 1, 2);
+INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'huynhhuong', N'123456', N'Huynh Huong', 1234567890, N'lonzomcf@yahoo.com.vn', N'user.png', 1, 2);
+INSERT Users (Id, Password, Fullname, Telephone, Email, Photo, Activated, Admin) VALUES (N'Longdz', N'123456', N'Long Hoang', 332467724, N'long@gmail.com', N'30714389_173138760010464_1235140372791820288_n.jpg', 1, 2);
 
 
 

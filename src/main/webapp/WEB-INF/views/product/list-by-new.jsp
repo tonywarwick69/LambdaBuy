@@ -66,8 +66,8 @@
 				</p>
 				<br /> <br />
 				<div data-id="${p.id}" class="pull-center text-center">
-					<button class="btn btn-sm btn-danger btn-add-to-cart">
-						<i class="glyphicon glyphicon-shopping-cart"></i>
+					<button class="btn btn-sm btn-danger btn-add-to-cart" onclick="location.href='/home/addProduct'">
+						<i class="glyphicon glyphicon-shopping-cart" ></i>
 					</button>
 					<button class="btn btn-sm btn-warning btn-star">
 						<i class="glyphicon glyphicon-star"></i>

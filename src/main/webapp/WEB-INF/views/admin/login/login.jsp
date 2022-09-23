@@ -17,7 +17,12 @@
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-
+					<!--  
+						<div class="wrap-input100 rs1 validate-input" data-validate="Email is required">
+						<input class="input100" type="email" name="email" placeholder="Email" value="${email}">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>-->
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
 						<input class="input100" type="password" name="pw" value="${pwd}" placeholder="Mật khẩu" >
 						<span class="focus-input100-1"></span>

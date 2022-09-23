@@ -17,7 +17,39 @@
 				"provider-properties": {
 					"@dbeaver-show-all-schemas@": "true"
 				},
-				"auth-model": "sqlserver_database",
+				"auth-model": "sqlserver_database"
+			}
+		},
+		"mysql8-182f2fb66c7-41c17145ac5dc549": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "awseb-e-m2myz3mhwg-stack-awsebrdsdatabase-s6qb6q4t",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "awseb-e-m2myz3mhwg-stack-awsebrdsdatabase-s6qb6q4thnim.cq6prej213eb.ap-southeast-1.rds.amazonaws.com",
+				"port": "3306",
+				"url": "jdbc:mysql://awseb-e-m2myz3mhwg-stack-awsebrdsdatabase-s6qb6q4thnim.cq6prej213eb.ap-southeast-1.rds.amazonaws.com:3306/",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-183076db444-5780492bbc6bfa0b": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"configurationType": "MANUAL",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native",
 				"handlers": {}
 			}
 		}

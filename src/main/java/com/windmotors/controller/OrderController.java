@@ -1,10 +1,12 @@
 package com.windmotors.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,7 @@ public class OrderController {
 	@GetMapping("/order/checkout")
 	public String showForm(@ModelAttribute("order") Order order) {
 		User user = (User) session.getAttribute("user");
-
+		
 		order.setOrderDate(new Date());
 		order.setUser(user);
 		order.setAmount(cart.getAmount());
@@ -60,6 +62,7 @@ public class OrderController {
 			@ModelAttribute("order") Order order){
 		Collection<Product> list = cart.getItems();
 		List<OrderDetail> details = new  ArrayList<>();
+		List<Product> listProduct = pdao.findAll();
 		for(Product product:list) {
 			OrderDetail detail =new OrderDetail();
 			detail.setOrder(order);
@@ -68,11 +71,16 @@ public class OrderController {
 			detail.setQuantity(product.getQuantity());
 			detail.setDiscount(product.getDiscount());
 			details.add(detail);
-
+			/*
+			 * for(Product updateProduct:listProduct) { Product productUpdate = new
+			 * Product(); productUpdate.setId(product.getId());
+			 * productUpdate.setQuantity(updateProduct.getQuantity()-product.getQuantity());
+			 * pdao.update(productUpdate); }
+			 */
+			
 		}
 		dao.create(order, details);
 		cart.clear();
-		 
 		model.addAttribute("message", "Đặt hàng thành công!");
 
 		
@@ -105,6 +113,8 @@ public class OrderController {
 		model.addAttribute("list", list);
 		return "product/list_order_item";
 	}
+	
+
 }
 
 
