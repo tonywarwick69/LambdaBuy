@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Wind Motors - Trang web mua bán xe trực tuyến uy tín, nhanh chóng và đa dạng mẫu mã hàng đầu Việt Nam </title>
+<title>Lambda Buy - Trang web mua hàng trực tuyến uy tín, nhanh chóng và đa dạng mẫu mã hàng đầu Việt Nam </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">

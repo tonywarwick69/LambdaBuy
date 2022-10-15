@@ -58,7 +58,7 @@
                 <p><a href="/faq" style="text-decoration: none; color: black;">Chính sách trả góp</a></p>
               </div>
               <div class="col-smx-3" style="width: 260px;">
-                <h5>Thông tin WindMotors shop</h5>
+                <h5>Thông tin LambdaBuy shop</h5>
                 <p><a href="/about" style="text-decoration: none; color: black;" >Giới thiệu</a></p>
                 <p><a href="/contact" style="text-decoration: none; color: black;">Thông tin liên hệ</a></p>
                	<p> <a href="/contact" style="text-decoration: none; color: black;">Hệ thống cửa hàng</a></p>

@@ -17,7 +17,7 @@
 						<h4 class="panel-title">
 							<a class="fas fa-folder-open"><span
 								style="font-size: 18px; font-weight: normal; font-family: Arial, Helvetica, sans-serif;">
-									Làm sao để mua hàng / đặt hàng trên ứng dụng WindMotors?</span></a>
+									Làm sao để mua hàng / đặt hàng trên ứng dụng LambdaBuy?</span></a>
 						</h4>
 					</div>
 					<div id="question0" class="panel-collapse collapse"
@@ -27,9 +27,9 @@
 								<span class="label label-primary">Trả lời</span>
 							</h5>
 							<p>
-								Cách 1: Truy cập vào website WindMotors và làm theo các cách sau:
+								Cách 1: Truy cập vào website LambdaBuy và làm theo các cách sau:
 								<br> 1. Sử dụng thanh tìm kiếm, gõ tên sản phẩm muốn mua.<br>
-								2. Xem các loại xe của WindMotors. <br> 
+								2. Xem các loại xe của LambdaBuy. <br> 
 								3.Để cho vào giỏ hàng bấm nút "Thêm vào giỏ"<br>
 								4.Sau đó bấm vào icon Giỏ hàng và bấm nút "Xem giỏ hàng" hoặc chỉ bấm vào icon Giỏ hàng<br>
 								5.Trong giỏ hàng bấm nút "Thanh toán" để tiến hành đặt hàng <br>
@@ -66,7 +66,7 @@
 							<h5>
 								<span class="label label-primary">Trả lời</span>
 							</h5>
-							<p>Tùy theo ngày bạn đổi trả mà WindMotors sẽ tiến hành hoàn
+							<p>Tùy theo ngày bạn đổi trả mà LambdaBuy sẽ tiến hành hoàn
 								tiền cho bạn</p>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 								<span class="label label-primary">Trả lời</span>
 							</h5>
 							<p>
-								WindMotors shop có chính sách miễn phí vận chuyển đối với mọi loại xe mà shop bán.
+								LambdaBuy shop có chính sách miễn phí vận chuyển đối với mọi loại xe mà shop bán.
 								<br>Còn đối với phụ kiện xe được miễn phí vận chuyển nếu tổng giá trị đơn hàng trên 500k
 							</p>
 						</div>
@@ -140,7 +140,7 @@
 								<span class="label label-primary">Trả lời</span>
 							</h5>
 							<p>
-								Bước 1: Đăng nhập tài khoản WindMotors của bạn.<br> Bước 2:
+								Bước 1: Đăng nhập tài khoản LambdaBuy của bạn.<br> Bước 2:
 								Ở góc phải trên cùng của màn hình, vui lòng nhấn vào tên của
 								bạn. Sau đó, tiếp tục nhấn vào "Thông tin đơn hàng".<br>
 								Bước 3: Chọn mục "Chờ xác nhận".<br> Bước 4: Tại đơn hàng
@@ -170,10 +170,10 @@
 								<span class="label label-primary">Trả lời</span>
 							</h5>
 							<p>
-								WindMotors rất tiếc về trải nghiệm không mong muốn mà bạn gặp
+								LambdaBuy rất tiếc về trải nghiệm không mong muốn mà bạn gặp
 								phải. Trường hợp đơn hàng của bạn đã quá thời gian dự kiến nhưng
 								vẫn chưa được giao, bạn vui lòng liên hệ Tổng đài Chăm sóc khách
-								hàng của WindMotors theo số 0964772094 hoặc gửi email đến hòm
+								hàng của LambdaBuy theo số 0964772094 hoặc gửi email đến hòm
 								thư windmotor2022@gmail.com để được hỗ trợ<br> Lưu ý: Thời gian
 								giao hàng dự kiến được tính từ khi nhà vận chuyển lấy hàng thành
 								công từ nhà bán hàng.

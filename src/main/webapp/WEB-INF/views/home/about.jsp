@@ -5,23 +5,23 @@
 		<br/>
        <div class="ct1"><br>
 		<div class="text-center"><img src="/static/images/logo1.png" style="text-align: center;" width="50%" /></div>
-        <h3><span>WindMotors shop - App mua xe online tiện lợi</span></h3><br>
+        <h3><span>LambdaBuy shop - Web mua hàng online tiện lợi</span></h3><br>
         <p style="text-align: justify;">
         	Với mong muốn giúp khách hàng có thể đặt mua xe ở mọi lúc mọi nơi mà không cần phải trực tiếp đến các cửa hàng xe,
-        	ứng dụng Wind Motors giúp khách hàng có thể xem, chọn lựa và đặt mua mẫu xe mình yêu thích ở mọi nơi mà
-        	vẫn đảm bảo nguồn gốc xuất sứ, đầy đủ giấy tờ chứng nhận hàng thật 100% đối với xe mà cửa hàng Wind Motors cung cấp.
-        	Bên cạnh đó, ứng dụng Wind Motors còn kèm theo nhiều chương trình khuyến mãi hấp dẫn cho nhiều thương hiệu xe.
-        	Trên hết, đội ngũ nhân viên của Wind Motors đảm bảo tất cả các loại xe từ nhiều thương hiệu khác nhau đều là hàng thật 100%,
-        	đảm bảo nguồn gốc xuất sứ và có đầy đủ các giấy tớ. Hơn thế nữa, đội ngũ Wind Motors cam kết không kê giá và minh bạch về đóng thuế.
-          	Đội ngũ nhân viên Wind Motors chúng tôi còn đem đến trải nghiệm mua sắm nhanh chóng, tiện lợi và giao dịch thanh toán online an toàn
+        	website LambdaBuy giúp khách hàng có thể xem, chọn lựa và đặt mua mẫu xe mình yêu thích ở mọi nơi mà
+        	vẫn đảm bảo nguồn gốc xuất sứ, đầy đủ giấy tờ chứng nhận hàng thật 100% đối với xe mà cửa hàng LambdaBuy cung cấp.
+        	Bên cạnh đó, ứng dụng LambdaBuy còn kèm theo nhiều chương trình khuyến mãi hấp dẫn cho nhiều thương hiệu xe.
+        	Trên hết, đội ngũ nhân viên của LambdaBuy đảm bảo tất cả các loại xe từ nhiều thương hiệu khác nhau đều là hàng thật 100%,
+        	đảm bảo nguồn gốc xuất sứ và có đầy đủ các giấy tớ. Hơn thế nữa, đội ngũ LambdaBuy cam kết không kê giá và minh bạch về đóng thuế.
+          	Đội ngũ nhân viên LambdaBuy chúng tôi còn đem đến trải nghiệm mua sắm nhanh chóng, tiện lợi và giao dịch thanh toán online an toàn
           	đảm bảo 100% tính báo mật thông tin khách hàng trong giao dịch.
             <br>
             Chúng tôi có niềm tin mạnh mẽ rằng trải nghiệm mua sắm trực tuyến phải đơn giản, dễ dàng và mang đến cảm xúc
             vui thích. Niềm tin này truyền cảm hứng và thúc đẩy chúng tôi mỗi ngày
         </p>
-        <p>Hiểu người khác chính là chìa khóa để lãnh đạo thành công. Tại WindMotors,điều quan trọng với chúng tôi là làm thế
+        <p>Hiểu người khác chính là chìa khóa để lãnh đạo thành công. Tại LambdaBuy,điều quan trọng với chúng tôi là làm thế
             nào để mang lại trải nghiệm tốt nhất cho nhân viên, đối tác và người dùng.</p>
-        <p class="quote">"Wind Motors - Lựa Chọn tốt nhất"</p>
+        <p class="quote">"LambdaBuy - Lựa Chọn tốt nhất"</p>
                 <br>
         <div class="row text-center padding">
             <div class="col-xs-12 col-sm-6 col-md-3">
@@ -42,7 +42,7 @@
                 <img src="https://st-fe-v2.fado.vn/desktop/image/svg/shopping-bag-intro.svg"
                     style="width: 80px; height: 70px;" alt="">
                 <h5>Yên tâm mua sắm</h5>
-                <p style="font-size: 14px;">Wind Motors shop đảm bảo bảo mật các giao dịch, nguồn gốc xuất xứ và giấy tờ đầy đủ cho tất cả loại xe cửa hàng đang bán, giải quyết khiếu nại, bảo vệ người
+                <p style="font-size: 14px;">LambdaBuy shop đảm bảo bảo mật các giao dịch, nguồn gốc xuất xứ và giấy tờ đầy đủ cho tất cả loại xe cửa hàng đang bán, giải quyết khiếu nại, bảo vệ người
                     mua.</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
@@ -87,8 +87,8 @@
             <br>
 
             <h3><span>MIỄN PHÍ VẬN CHUYỂN TOÀN QUỐC</span></h3><br>
-            <p>Wind Motors miễn phí 100% khi khách hàng đặt mua xe trên ứng dụng của shop</p>
-            <p>Trên ứng dụng WindMotors luôn ngập tràn các sự kiện và khuyến mãi hấp dẫn, giảm giá khủng, flash sale giá sốc để
+            <p>LambdaBuy miễn phí 100% khi khách hàng đặt mua xe trên ứng dụng của shop</p>
+            <p>Trên ứng dụng LambdaBuy luôn ngập tràn các sự kiện và khuyến mãi hấp dẫn, giảm giá khủng, flash sale giá sốc để
                 bạn thỏa mãn nhu cầu mua sắm mỗi ngày với giá hợp túi tiền.</p>
 
        </div>
@@ -110,7 +110,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-4">
     
                     <h4 style="font-size: 27px;">Vị Trí của Chúng Tôi</h4>
-                    <p style="font-size: 15px;">Đối với người dùng trong khu vực, WindMotors mang đến trải nghiệm đặt mua xe nhanh chóng, tiện lợi
+                    <p style="font-size: 15px;">Đối với người dùng trong khu vực, LambdaBuy mang đến trải nghiệm đặt mua xe nhanh chóng, tiện lợi
                     với đội ngũ sẵn sàng hỗ trợ tư vấn khách hàng khi cần.</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4">
