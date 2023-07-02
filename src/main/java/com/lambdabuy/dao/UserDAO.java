@@ -18,5 +18,7 @@ public interface UserDAO {
 	long getPageCount(int pageSize);
 
 	List<User> getPage(int pageNo, int pageSize);
+	
+
 
 }

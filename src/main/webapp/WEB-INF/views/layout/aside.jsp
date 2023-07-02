@@ -38,7 +38,7 @@
 	<div class="panel-heading"><s:message code="lyt.cate.title"/></div>
 	<div class="list-group">
 		<c:forEach var="c" items="${cates}">
-			<a href="/product/list-by-category/${c.id}" class="list-group-item">${c.nameVN}</a> 
+			<a href="/product/list-by-category/${c.id}" class="list-group-item">${c.name}</a> 
 		</c:forEach>
 	</div>
 </div>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lambdabuy.entity.Order;
 import com.lambdabuy.entity.OrderDetail;
+import com.lambdabuy.entity.Product;
 
 @Transactional
 @Repository
@@ -67,5 +68,16 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 		List<OrderDetail> list=query.getResultList();
 		return list;
 	}
-
+/*
+	@Override
+	public List<OrderDetail> findByProduct(Product p) {
+		// TODO Auto-generated method stub
+		String hql="FROM OrderDetail d WHERE d.product.id=:pid";
+		Session session=factory.getCurrentSession();
+		TypedQuery<OrderDetail> query=session.createQuery(hql,OrderDetail.class);
+		query.setParameter("pid", p.getId());
+		List<OrderDetail> list=query.getResultList();
+		return list;
+	}
+*/
 }

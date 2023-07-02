@@ -19,7 +19,7 @@ public class AuthorizelnterceptorAdmin extends HandlerInterceptorAdapter{
 			throws Exception {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if(user == null || user.getAdmin()==2) {
+		if(user == null || user.getRole()==2) {
 			session.setAttribute("back-url-admin", request.getRequestURI());
 			response.sendRedirect("/admin/login");
 			return false;

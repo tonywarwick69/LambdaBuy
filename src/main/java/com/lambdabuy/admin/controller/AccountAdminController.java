@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +33,11 @@ import com.lambdabuy.service.MailService;
 
 @Controller
 public class AccountAdminController {
+	@Autowired
+	private JdbcUserDetailsManager jdbcUserDetailsManager;
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
 	UserDAO dao;
@@ -40,6 +47,7 @@ public class AccountAdminController {
 
 	@Autowired
 	CookieService cookie;
+	//Cookie: tính năng nhớ các field mà user đã nhập trước đó
 
 	@Autowired
 	ServletContext app;
@@ -49,7 +57,7 @@ public class AccountAdminController {
 	
 	@Autowired
 	HttpServletRequest request;
-	
+	//Tạo form login với userid và pass
 	@GetMapping(value= {"/admin/login","/admin"})
 	public String login(Model model) {
 		Cookie ckid = cookie.read("userid");
@@ -65,6 +73,7 @@ public class AccountAdminController {
 		}
 		return "admin/login/login";
 	}
+	//Xử lý login
 	@PostMapping("/admin/login")
 	public String login(Model model,
 			@RequestParam("id") String id,
@@ -75,11 +84,11 @@ public class AccountAdminController {
 		
 		if (user == null) {
 			model.addAttribute("message", "Sai tài khoản hoặc mật khẩu");
-		} else if (!pw.equals(user.getPassword())) {
+		} else if (bCryptPasswordEncoder.matches(pw.toString(), user.getPassword())==false) {
 			model.addAttribute("message", "Sai mật khẩu");
 		} else if (!user.getActivated()) {
 			model.addAttribute("message", "Tài khoản chưa được kích hoạt!");
-		}else if (user.getAdmin()!=1) {
+		}else if (user.getRole()!=1 && user.getRole()!=4) {
 			model.addAttribute("message", "Không có quyền!");
 		/*} else if(!email.equals(user.getEmail())) {
 			model.addAttribute("message","Nhập sai email!");*/
@@ -106,13 +115,13 @@ public class AccountAdminController {
 		return "admin/login/login";
 	}
 
-	
+	//Xóa user khỏi session và redirect tới trang login
 	@RequestMapping("/admin/logout")
 	public String logout(Model model) {
 		session.removeAttribute("user");
 		return "redirect:/admin/login";
 	}
-	
+	//Kích hoạt tài khoản
 	@GetMapping("/admin/account/activate/{id}")
 	public String activate(Model model,@PathVariable("id") String id) {
 		User user = dao.findById(id);
@@ -121,7 +130,7 @@ public class AccountAdminController {
 		
 		return "redirect:/admin/account/login";
 	}
-	
+	//Tạo form chỉnh sửa thông tin cá nhân
 	@GetMapping("/admin/profile")
 	public String edit(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -129,7 +138,7 @@ public class AccountAdminController {
 
 		return "admin/account/edit";
 	}
-
+	//Chỉnh sửa thông tin cá nhân
 	@PostMapping("/admin/profile")
 	public String edit(Model model, @ModelAttribute("form") User user,BindingResult errors,
 			@RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException, MessagingException {
@@ -143,6 +152,7 @@ public class AccountAdminController {
 			file.transferTo(f);
 			user.setPhoto(f.getName());
 		}
+		user.setPassword(user.getPassword());
 		dao.update(user);
 		session.setAttribute("user", user);
 
@@ -150,14 +160,14 @@ public class AccountAdminController {
 
 		return "admin/account/edit";
 	}
-	
+	//Tạo form thay đổi mật khẩu
 	@GetMapping("/admin/change")
 	public String change(Model model) {
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("form", user);
 		return "admin/account/change";
 	}
-
+	//Thay đổi mật khẩu
 	@PostMapping("/admin/change")
 	public String change(Model model, 
 			@ModelAttribute("form") User users,
@@ -171,10 +181,10 @@ public class AccountAdminController {
 			User user = dao.findById(id);
 			if (user == null) {
 				model.addAttribute("message", "Sai tài khoản!");
-			} else if (!pw.equals(user.getPassword())) {
+			} else if (bCryptPasswordEncoder.matches(pw.toString(), user.getPassword())==false) {
 				model.addAttribute("message", "Mật khẩu hiện tại không đúng!");
 			} else {
-				user.setPassword(pw1);
+				user.setPassword(bCryptPasswordEncoder.encode(pw1));
 				dao.update(user);
 
 				model.addAttribute("message", "Thay đổi mật khẩu thành công!");

@@ -15,10 +15,7 @@
 								<label>Tên loại:</label>
 								<form:input path="name" class="form-control" required="required" pattern=".{4,}" title="Tên loại phải từ 4 ký tự trở lên"/>
 							</div>
-							<div class="form-group">
-								<label>Tên hãng:</label>
-								<form:input path="nameVN" class="form-control" pattern=".{4,}" title="Tên hãng phải từ 4 ký tự trở lên"/>
-							</div>
+						
 							<div class="form-group">
 								<button class="btn btn-primary" formaction="${base}/create">Create</button>
 								<button class="btn btn-warning" formaction="${base}/update">Update</button>

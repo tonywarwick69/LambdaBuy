@@ -14,7 +14,7 @@
 							<tr>
 								<th>ID</th>
 								<th>Tên loại</th>
-								<th>Tên hãng</th>
+								
 								<th>Thao tác</th>
 							</tr>
 						</thead>
@@ -23,7 +23,7 @@
 								<tr class="odd gradeX">
 									<td>${e.id}</td>
 									<td>${e.name}</td>
-									<td>${e.nameVN}</td>
+									
 									<td>
 										<a class="btn btn-sm btn-info" href="${base}/edit/${e.id}">Edit</a>
 										<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a>

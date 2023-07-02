@@ -16,7 +16,9 @@
 							<tr>
 								<th>ID</th>
 								<th>Tên sản phẩm</th>
+								<th>Loại sản phẩm</th>
 								<th>Thương hiệu</th>
+								<th>Nhà cung cấp</th>
 								<th>Đơn giá</th>
 								<th>Giảm giá</th>
 								<th>Số lượng</th>
@@ -29,7 +31,9 @@
 								<tr class="odd gradeX">
 									<td>${e.id}</td>
 									<td>${e.name}</td>
-									<td>${e.category.nameVN}</td>
+									<td>${e.category.name}</td>
+									<td>${e.brand.name}</td>
+									<td>${e.supplier.name}</td>
 									<td>
 										<f:formatNumber value="${e.unitPrice}" pattern="#,###" /> VNĐ
 									</td>
@@ -39,7 +43,7 @@
 									
 									<td>
 										<a class="btn btn-sm btn-info" href="${base}/edit/${e.id}">Edit</a>
-										<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a>
+										<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}" >Delete</a>
 									</td>
 								</tr>
 							</c:forEach>

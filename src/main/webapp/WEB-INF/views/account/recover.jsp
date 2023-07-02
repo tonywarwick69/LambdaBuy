@@ -72,13 +72,13 @@
 					<form:form action="/account/recover" method="post" modelAttribute="form" enctype="multipart/form-data">
 						<br>
 						<br/>
-						<div class="row">
+						<div class="row" style="display:none;">
 							<div class="col-sm-4">
 								<p>Tên đăng nhập:</p>
 							</div>
 							<div class="col-sm-8">
 								<p>
-									<input name="id" type="text" style="width: 90%;" class="form-control" required="required" />
+									<input name="id" type="text" style="width: 90%;" class="form-control" required="required" value="${id}" readOnly="true"/>
 								</p>
 							</div>
 						</div>

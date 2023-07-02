@@ -1,14 +1,19 @@
+/*
 package com.lambdabuy.service;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.lambdabuy.dao.CartItemDAO;
 import com.lambdabuy.dao.ProductDAO;
+import com.lambdabuy.entity.Cart;
+import com.lambdabuy.entity.CartItem;
 import com.lambdabuy.entity.Product;
 
 @SessionScope //Name: scopedTarget.cartService
@@ -17,13 +22,16 @@ public class CartService {
 
 	@Autowired
 	ProductDAO dao;
-
-	Map<Integer, Product> map = new HashMap<>();
+	
+	@Autowired
+	CartItemDAO items;
+	
+	Map<Integer, CartItem> map = new HashMap<>();
 
 	public void add(Integer id) {
-		Product p = map.get(id);
+		CartItem p = map.get(id);
 		if (p == null) {
-			p = dao.findById(id);
+			p = items.findById(id);
 			p.setQuantity(1);
 			map.put(id, p);
 		} else {
@@ -36,7 +44,7 @@ public class CartService {
 	}
 
 	public void update(Integer id, int qty) {
-		Product p = map.get(id);
+		CartItem p = map.get(id);
 		p.setQuantity(qty);
 	}
 
@@ -45,24 +53,29 @@ public class CartService {
 	}
 
 	public int getCount() {
-		Collection<Product> ps = this.getItems();
+		Collection<CartItem> ps = this.getItems();
 		int count = 0;
-		for (Product p : ps) {
+		for (CartItem p : ps) {
 			count += p.getQuantity();
 		}
 		return count;
 	}
 
 	public double getAmount() {
-		Collection<Product> ps = this.getItems();
+		Collection<CartItem> ps = this.getItems();
 		double amount = 0;
-		for (Product p : ps) {
-			amount += p.getQuantity() * p.getUnitPrice() * (1 - p.getDiscount());
+		for (CartItem i : ps) {
+			List<Product> pros = dao.findByIds(i.getProduct().getId().toString());
+			for(Product p: pros) {
+				amount += i.getQuantity() * p.getUnitPrice() * (1 - p.getDiscount());
+			}
+			
 		}
 		return amount;
 	}
 
-	public Collection<Product> getItems() {
+	public Collection<CartItem> getItems() {
 		return map.values();
 	}
 }
+*/

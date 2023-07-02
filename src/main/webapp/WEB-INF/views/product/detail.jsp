@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 
 
-<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}" />
+
 <br />
 <div class="row">
 	<div class="col-sm-9">
@@ -22,8 +22,12 @@
 						<h3 style="color: black; font-weight: bold; text-align: left;">
 							${prod.name}</h3>
 						<p>
-							Thương hiệu: <b>${prod.category.nameVN}</b> | SKU: ${prod.id}
+							 SKU: ${prod.id}
 						</p>
+						<a href="/product/list-by-brands/${prod.brand.id}">Thương hiệu: <b>${prod.brand.name} |  </b></a>
+						<a href="/product/list-by-suppliers/${prod.supplier.id}">
+							Nhà cung cấp: <b>${prod.supplier.name}</b> 
+						</a>
 						<br /> <a href="/product/detail/${prod.id}"> <c:choose>
 								<c:when test="${prod.discount > 0 }">
 									<p
@@ -73,15 +77,37 @@
 							Tình trạng: <span
 								style="background-color: #99FF99; border-radius: 4px; padding: 3px; color: black; font-weight: bold;">${prod.available?'Còn hàng':'Hết hàng'}</span>
 						</p>
-
-						<div class="row">
-							<div class="col-sm-6" data-id="${prod.id}">
-								<button class="theo-vao-gio btn-add-to-carts"
-									data-toggle="modal" data-target="#myModals">THÊM VÀO
-									GIỎ</button>
-							</div>
-
-						</div>
+						<c:choose>
+							<c:when test="${prod.available == true}">
+								<c:choose>
+									<c:when test="${empty sessionScope.user }">
+										<div class="row">
+											<div class="col-sm-6" data-id="${prod.id}">
+												<a class="theo-vao-gio btn-add-to-carts" href="/account/login"
+													role="button" >THÊM VÀO GIỎ
+												</a>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="row">
+											<div class="col-sm-6" data-id="${prod.id}">
+												<a class="theo-vao-gio btn-add-to-carts" href="/cart/add-to-cart/${prod.id}"
+													role="button" onClick="alert('Đã thêm sản phẩm vào giỏ hàng')">THÊM VÀO GIỎ
+												</a>
+											</div>
+				
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<a class="theo-vao-gio btn-add-to-carts" href="#"
+													role="button" >HẾT HÀNG</a>
+							</c:otherwise>
+						</c:choose>
+					
+					
 
 					</div>
 					<br>
@@ -95,7 +121,7 @@
 						<p>
 							<img style="margin-top: -5px"
 								src="/static/images/icon/icon_km.png" width="15px" height="15px">
-							<span>Bánh xe dự trữ, nón bảo hiểm, giá đỡ điện thoại và nhiều phụ kiện khác giảm 30% khi mua kèm</span>
+							<span>Điện thoại, thời trang, mỹ phẩm và nhiều mặt hàng khác giảm giá hấp dẫn</span>
 						</p>
 					</div>
 				</div>
@@ -116,13 +142,13 @@
 				phẩm được miễn phí giao hàng</b>
 			<div class="sp-km">
 				<h6>Chính sách bán hàng</h6>
-				<i><i class="	far fa-check-circle ico"></i> &nbsp;Cam kết xe
-					chính hãng và đầy đủ giấy tờ pháp lý</i><br> <i><i class="fas fa-truck-monster ico"></i>
+				<i><i class="	far fa-check-circle ico"></i> &nbsp;Cam kết hàng
+					chính hãng 100%</i><br> <i><i class="fas fa-truck-monster ico"></i>
 					&nbsp;Miễn phí giao hàng khắp Việt Nam</i><br> <i><i
 					class="fas fa-redo ico"></i> &nbsp;Đổi trả miễn phí trong 10 ngày nếu phát sinh lỗi do nhà sản xuất</i> <br>
 				<br>
 				<h6>Dịch vụ khác</h6>
-				<i><i class="fas fa-hammer ico"></i> &nbsp;Gửi bảo hành miễn phí xe mua ở WindMotors nếu phát sinh lỗi</i><br> 
+				<i><i class="fas fa-hammer ico"></i> &nbsp;Hỗ trợ gửi bảo hành miễn phí</i><br> 
 				<i><i class="fa fa-car ico" aria-hidden="true"></i> &nbsp;Thu cũ đổi mới </i><br>
 			</div>
 			<!-- /SHOP SIDEBAR -->
@@ -366,9 +392,9 @@
 								</p>
 								<br /> <br />
 								<div data-id="${p.id}" class="pull-center text-center">
-									<button class="btn btn-sm btn-danger btn-add-to-cart">
-										<i class="glyphicon glyphicon-shopping-cart"></i>
-									</button>
+									<a class="btn btn-sm btn-danger btn-add-to-cart" href="/cart/add-to-cart/${p.id}" role="button" onClick="alert('Đã thêm sản phẩm vào giỏ hàng')">
+										<i class="glyphicon glyphicon-shopping-cart" ></i>
+									</a>
 									<button class="btn btn-sm btn-warning btn-star">
 										<i class="glyphicon glyphicon-star"></i>
 									</button>
@@ -402,7 +428,8 @@
 	-webkit-box-shadow: 1px 3px 27px 2px rgba(0, 0, 0, 0.42);
 	-moz-box-shadow: 1px 3px 27px 2px rgba(0, 0, 0, 0.42);
 	box-shadow: 1px 3px 27px 2px rgba(0, 0, 0, 0.42);
-}
+}	
+
 
 .pull-center {
 	margin-top: -30px;

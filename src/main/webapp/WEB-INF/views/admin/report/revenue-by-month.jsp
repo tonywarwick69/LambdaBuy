@@ -5,7 +5,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Doanh thu theo tháng</h1>
+		<h1 class="page-header">Doanh thu theo tháng và năm</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -26,6 +26,7 @@
 						<thead>
 							<tr>
 								<th>Tháng</th>
+								<th>Năm</th>
 								<th>Số lượng</th>
 								<th>Doanh thu</th>
 								<th>Thấp nhất</th>
@@ -38,10 +39,11 @@
 								<tr>
 									<td>${e[0]}</td>
 									<td>${e[1]}</td>
-									<td><f:formatNumber value="${e[2]}" pattern="#,###" /> VNĐ</td>
+									<td>${e[2]}</td>
 									<td><f:formatNumber value="${e[3]}" pattern="#,###" /> VNĐ</td>
 									<td><f:formatNumber value="${e[4]}" pattern="#,###" /> VNĐ</td>
 									<td><f:formatNumber value="${e[5]}" pattern="#,###" /> VNĐ</td>
+									<td><f:formatNumber value="${e[6]}" pattern="#,###" /> VNĐ</td>
 								</tr>
 							</c:forEach>
 						</tbody>

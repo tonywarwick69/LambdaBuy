@@ -22,24 +22,32 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	private Integer id;
 	//String userId;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	Date orderDate;
-	String telephone;
-	String address;
-	Double amount;
-	String description;
-	Integer status;
+	private Date orderDate;
+	private String telephone;
+	private String address;
+	private Double amount;
+	private String description;
+	private Integer status;
 	
 	@ManyToOne
 	@JoinColumn(name="userId")
-	User user;
+	private User user;
 	
+	private String payment;
 	
+
 	@OneToMany(mappedBy = "order")
-	List<OrderDetail> orderDetails;
+	private List<OrderDetail> orderDetails;
+
+
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 	public Integer getId() {
@@ -127,7 +135,14 @@ public class Order {
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+	public String getPayment() {
+		return payment;
+	}
 
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 	
 	
 }

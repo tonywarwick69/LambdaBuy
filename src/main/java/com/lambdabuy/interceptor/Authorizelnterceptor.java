@@ -22,7 +22,7 @@ public class Authorizelnterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if(user == null || user.getAdmin()==1) {
+		if(user == null || user.getRole()==1) {
 			session.setAttribute("back-url", request.getRequestURI());
 			response.sendRedirect("/account/login");
 			return false;

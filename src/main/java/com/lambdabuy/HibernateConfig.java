@@ -1,9 +1,5 @@
 package com.lambdabuy;
 
-
-
-
-
 import java.io.IOException;
 import java.util.Properties;
 
@@ -19,7 +15,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
-
+//config Hibernate để lấy dữ liệu và CRUD
 @Configuration
 @PropertySource("classpath:datasource.properties")
 public class HibernateConfig {

@@ -28,7 +28,7 @@ public class ProductManger {
 	
 	@Autowired
 	ServletContext app;
-	
+	//Hiển thị ds Product
 	@RequestMapping("/admin/product/index")
 	public String index(Model model) {
 		Product entity = new Product();
@@ -38,7 +38,7 @@ public class ProductManger {
 		model.addAttribute("list", dao.findAll());
 		return "admin/product/index";
 	}
-	
+	//Tạo form Chỉnh sửa thông tin
 	@RequestMapping("/admin/product/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id) {
 		Product entity = dao.findById(id);
@@ -47,7 +47,7 @@ public class ProductManger {
 		return "admin/product/index";
 	}
 	
-	
+	//Thêm sản phẩm mới
 	@RequestMapping("/admin/product/create")
 	public String create(RedirectAttributes model, 
 			@ModelAttribute("entity") Product entity,
@@ -64,7 +64,7 @@ public class ProductManger {
 		model.addAttribute("message", "Thêm mới thành công!");
 		return "redirect:/admin/product/index";
 	}
-	
+	// Chỉnh sửa thông tin
 	@RequestMapping("/admin/product/update")
 	public String update(RedirectAttributes model,
 			@ModelAttribute("entity") Product entity,
@@ -78,7 +78,7 @@ public class ProductManger {
 		model.addAttribute("message", "Cập nhật thành công!");
 		return "redirect:/admin/product/edit/"+entity.getId();
 	}
-	
+	//Xóa sản phẩm
 	@RequestMapping(value = {"/admin/product/delete","/admin/product/delete/{id}"})
 	public String delete(RedirectAttributes model, 
 			@RequestParam(value="id", required = false) Integer id1, 

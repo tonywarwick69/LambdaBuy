@@ -14,28 +14,33 @@
 			</div>
 			<div class="form-group">
 				<label>Khách hàng:</label>
-				<form:input path="user.id" class="form-control" />
+				<form:input path="user.id" class="form-control" readonly="true" />
 			</div>
 			<div class="form-group">
 				<label>Ngày đặt hàng:</label>
-				<form:input path="orderDate" class="form-control" />
+				<form:input path="orderDate" class="form-control" readonly="true"/>
 			</div>
 			<div class="form-group">
 				<label>Số điện thoại:</label>
-				<form:input path="telephone" class="form-control" />
+				<form:input path="telephone" class="form-control" readonly="true" />
 			</div>
 			<div class="form-group">
 				<label>Địa chỉ:</label>
-				<form:input path="address" class="form-control" />
+				<form:input path="address" class="form-control" readonly="true" />
 			</div>
 			<div class="form-group">
 				<label>Tổng tiền:</label>
-				<form:input path="amount"  class="form-control" />
+				<form:input path="amount"  class="form-control" readonly="true"/>
+			</div>
+			<div>
+				<label>Hình thức thanh toán: </label>
+				<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="payment" value="COD" checked="checked" /> Trả tiền khi nhận hàng </span>
+				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="payment" value="MOMO"  />  Chuyển khoản qua MOMO </span>
 			</div>
 			<div>
 				<label>Trạng thái: </label>
-				<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="1" checked="checked" /> Chưa giao hàng </span>
-				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="2"  />  Đã thanh toán </span>
+				<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="1" checked="checked" /> Đang xử lý </span>
+				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="2"  />  Đã thanh toán và đang giao hàng </span>
 				<span class="btn btn-primary" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="3"  /> Đang giao hàng </span>
 				<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="4"  />  Đã giao hàng và Thanh toán </span>
 				<span class="btn btn-danger" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="5"  />  Hủy đơn hàng </span>
@@ -43,16 +48,19 @@
 			<br/>
 			<div class="form-group">
 				<label>Mô tả:</label>
-				<form:textarea path="description" class="form-control" />
+				<form:textarea path="description" class="form-control" readonly="true"/>
 			</div>
-			
-			
 			<div class="form-group">
+				<c:if test="${!empty details}">
+					<jsp:include page="_details.jsp"/>
+				</c:if>
+			</div>
 
+			<div class="form-group">
+					
 				<c:choose>
 					<c:when test="${!empty details}">
 						<button class="btn btn-warning" formaction="${base}/update">Update</button>
-						<button class="btn btn-danger" formaction="${base}/delete">Delete</button>
 						<a class="btn btn-default" href="${base}/index">Làm mới</a>
 					</c:when>
 					<c:otherwise>
@@ -63,9 +71,9 @@
 
 			</div>
 		</form:form>
-		<c:if test="${!empty details}">
-			<jsp:include page="_details.jsp"/>
-		</c:if>
+		
+			
+		
 	</div>
 </div>
 

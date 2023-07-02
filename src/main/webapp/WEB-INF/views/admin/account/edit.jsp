@@ -31,7 +31,7 @@
 							</div>
 							<div class="form-group">
 								<label>Email:</label>
-								<form:input path="email" class="form-control" required="true" />
+								<form:input path="email" class="form-control" required="true" readonly="true" />
 							</div>
 							<div class="form-group">
 								<label>Ảnh:</label> 
@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<form:hidden path="password" />
 								<form:hidden path="activated" />
-								<form:hidden path="admin" />
+								<form:hidden path="role" />
 								<button class="btn btn-success">Cập nhật</button>
 							</div>
 						</form:form>

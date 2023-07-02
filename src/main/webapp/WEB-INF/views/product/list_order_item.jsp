@@ -16,12 +16,12 @@
 			<b>Sản phẩm đã mua</b>
 
 	</h3>
-<c:forEach var="p" items="${list}">
-	<div class="col-sm-3" style="padding: 5px 5px 5px 5px">
-		<div class="thumbnail">
+<c:forEach var="p" items="${list}" >
+	<div class="col-sm-4" style="padding: 5px 5px 5px 5px">
+		<div class="thumbnail" >
 
 			<a href="/product/detail/${p.id}" >
-				
+					
 					<c:choose>
 						<c:when test="${p.discount > 0 }">
 						<p style="background-color: red; width: 30px; height: 30px; text-align: right; float: right;position: relative;border-radius: 30px">
@@ -35,10 +35,10 @@
 						</c:otherwise>
 					</c:choose>
 				
-				<img style="margin-right: 30px;margin-top: 5px" class="estore-prod" src="/static/images/products/${p.image}" title="${p.name}">
+				<img style="align-items:center;margin-top: 5px" class="estore-prod" src="/static/images/products/${p.image}" title="${p.name}">
 			</a>
 
-			<div class="caption">
+			<div class="caption" >
 				<p style="padding: 3px; text-align: center; color: black">
 					<b>${p.name}</b>
 				</p>
@@ -46,7 +46,7 @@
 					style="padding: 3px; font-size: 15px; text-align: center; font-weight: bold;">
 					<c:choose>
 						<c:when test="${p.discount <= 0 }">
-							<span style="text-align: left; font-weight: bold; color: red"><f:formatNumber
+							<span style="text-align: left; font-weight: bold;color:red"><f:formatNumber
 									value="${p.unitPrice}" pattern="#,###" />VNĐ </span>
 						</c:when>
 						<c:otherwise>
@@ -58,7 +58,7 @@
 					</c:choose>
 					<c:choose>
 						<c:when test="${p.discount > 0 }">
-							<span style="margin-left: 5px; font-weight: bold; color: red"> <f:formatNumber
+							<span style="margin-left: 5px; font-weight: bold;color:red"> <f:formatNumber
 									value="${p.unitPrice * (1 - p.discount)}" pattern="#,###" />
 								VNĐ
 							</span>
@@ -71,9 +71,27 @@
 				</p>
 				<br /> <br />
 				<div data-id="${p.id}" class="pull-center text-center">
-					<button class="btn btn-sm btn-danger btn-add-to-cart">
-						<i class="glyphicon glyphicon-shopping-cart"></i>
-					</button>
+					<c:choose>
+							<c:when test="${p.available == true}">
+								<c:choose>
+									<c:when test="${empty sessionScope.user }">
+										<a class="btn btn-sm btn-danger btn-add-to-cart" href="/account/login">
+											<i class="glyphicon glyphicon-shopping-cart" ></i>
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a class="btn btn-sm btn-danger btn-add-to-cart" href="/cart/add-to-cart/${p.id}" role="button" onClick="alert('Đã thêm sản phẩm vào giỏ hàng')">
+											<i class="glyphicon glyphicon-shopping-cart" ></i>
+										</a>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<a class="btn btn-sm btn-secondary btn-add-to-cart" href="#" role="button" onClick="alert('Hết hàng')">
+											<i class="glyphicon glyphicon-shopping-cart" ></i>
+								</a>
+							</c:otherwise>
+					</c:choose>
 					<button class="btn btn-sm btn-warning btn-star">
 						<i class="glyphicon glyphicon-star"></i>
 					</button>
@@ -87,7 +105,7 @@
 
 		</div>
 	</div>
-	
+
 </c:forEach>
 
 

@@ -22,4 +22,13 @@ public interface ProductDAO {
 	List<Product> findByIds(String ids);
 
 	List<Product> findBySpecial(Integer id);
+	
+	List<Product> findBySupplierId(int supplierId);
+	
+	List<Product> findByBrandId(int brandId);
+	
+	void updateQuantity(Product entity);
+	
+	//List<Product> findByNewProduct();
+	
 }

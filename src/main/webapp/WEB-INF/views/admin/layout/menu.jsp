@@ -22,12 +22,13 @@
 		<li class="dropdown">
 		
 			<c:choose>
-				<c:when test="${empty sessionScope.user }">
+				<c:when test="${empty sessionScope.user}">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
 						<i class="fa fa-user fa-fw"></i>
 						<i class="fa fa-caret-down"></i>
 					</a>
-				</c:when>			
+				</c:when>	
+							
 				<c:otherwise>
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
 						<i class="fa fa-user fa-fw"></i>
@@ -70,11 +71,26 @@
 					<c:when test="${empty sessionScope.user }"> </c:when>
 					<c:otherwise>
 						<li>
-							<a href="/admin/category/index"><i class="fa fa-tags fa-fw"></i> Quản lý loại sản phẩm</a>
+							<a href="/admin/category/index"><i class="fa fa-tags fa-fw"></i> Quản lý danh mục sản phẩm</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
-				
+				<c:choose>
+					<c:when test="${empty sessionScope.user }"> </c:when>
+					<c:otherwise>
+						<li>
+							<a href="/admin/brand/index"><i class="fa fa-copyright"></i> Quản lý thương hiệu</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+					<c:choose>
+					<c:when test="${empty sessionScope.user }"> </c:when>
+					<c:otherwise>
+						<li>
+							<a href="/admin/supplier/index"><i class="fa fa-home"></i> Quản lý nhà bán hàng</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
 				<c:choose>
 					<c:when test="${empty sessionScope.user }"> </c:when>
 					<c:otherwise>
@@ -85,6 +101,7 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${empty sessionScope.user }"> </c:when>
+						<c:when test="${sessionScope.user.role ==4}"></c:when>
 					<c:otherwise>
 						<li>
 							<a href="/admin/customer/index"><i class="fa fa-users fa-fw"></i> Quản lý người dùng</a>
@@ -104,11 +121,15 @@
 					<c:otherwise>
 						<li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Quản lý thống kê<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="/admin/inventory/index">Tồn kho theo loại</a></li>
-								<li><a href="/admin/revenue/category">Thống kê sản phẩm đã mua theo thương hiệu</a></li>
-								<li><a href="/admin/revenue/customer">Doanh thu theo khách hàng</a></li>
-								<li><a href="/admin/revenue/month">Doanh thu theo tháng</a></li>
+								<li><a href="/admin/inventory/index">Thống kê sản phẩm</a></li>
+								<li><a href="/admin/revenue/category">Thống kê doanh thu bán sản phẩm</a></li>
+								<!--  
+								<li><a href="/admin/revenue/customer">Doanh thu theo khách hàng</a></li> 
+								<li><a href="/admin/revenue/supplier">Doanh thu của nhà bán hàng</a></li>
+								<li><a href="/admin/revenue/month">Doanh thu theo tháng và năm</a></li>
 								<li><a href="/admin/revenue/year">Doanh thu theo năm</a></li>
+								-->
+								<li><a href="/admin/revenue/time">Thống kê doanh thu theo thời gian</a></li>
 							</ul> <!-- /.nav-second-level -->
 						</li>
 					</c:otherwise>

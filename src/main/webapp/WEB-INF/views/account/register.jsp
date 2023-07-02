@@ -30,6 +30,10 @@
 				<form:input path="email" class="form-control"  required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email không hợp lệ"/>
 			</div>
 			<div class="form-group">
+				<label>Ngày sinh:</label>
+					<form:input path="birthDay" class="form-control"  required="required" title="dd/MM/yyyy" data-date-format="dd/MM/yyyy" placeholder="dd/MM/yyyy"/>
+			</div>
+			<div class="form-group">
 				<label>Ảnh:</label> <input type="file" name="photo_file" />
 				<form:hidden path="photo" class="form-control" />
 			</div>

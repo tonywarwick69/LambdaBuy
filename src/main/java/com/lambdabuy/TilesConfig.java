@@ -7,7 +7,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
-
+//Apache Titles để nhanh chóng code front end bằng cách tài sử dụng cách thành phần như header, footer, aside, menu, nav,..
 @Configuration
 public class TilesConfig {
 	@Bean("viewResolver")

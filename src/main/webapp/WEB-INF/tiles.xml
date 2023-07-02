@@ -37,6 +37,26 @@
 		<definition name="admin/login/login" extends="admin.definition2">
 			<put-attribute name="content1" value="/WEB-INF/views/admin/login/login.jsp"/>
 		</definition>
+		<!-- layout supplier -->
+		<definition name="supplier.definition" template="/WEB-INF/views/supplier/layout.jsp">
+			<put-attribute name="head" value="/WEB-INF/views/supplier/layout/head.jsp"/>
+			<put-attribute name="menu" value="/WEB-INF/views/supplier/layout/menu.jsp"/>
+			<put-attribute name="body" value=""/>
+		</definition>
+		
+		<definition name="supplier/*/*" extends="supplier.definition">
+			<put-attribute name="body" value="/WEB-INF/views/supplier/{1}/{2}.jsp"/>
+		</definition>
+		
+		<!-- layout supplier -->
+			<definition name="supplier.definition2" template="/WEB-INF/views/supplier/layout-login.jsp">
+			<put-attribute name="content1"/>
+		</definition>
+		
+		<definition name="supplier/login/login" extends="supplier.definition2">
+			<put-attribute name="content1" value="/WEB-INF/views/supplier/login/login.jsp"/>
+		</definition>
+		
 		
 		
 </tiles-definitions>

@@ -18,7 +18,7 @@
 					<label>Giảm giá:</label>
 					<form:input path="discount" class="form-control" type="number"
 						required="required" min="0" oninput="validity.valid||(value='');"
-						step="0.05" />
+						step="0.01" />
 				</div>
 			</div>
 			<div class="row">
@@ -41,9 +41,23 @@
 						required="required" min="0" />
 				</div>
 				<div class="form-group col-sm-6">
-					<label>Thương hiệu:</label>
+					<label>Loại sản phẩm:</label>
 					<form:select path="category.id" class="form-control">
-						<form:options items="${cates}" itemLabel="nameVN" itemValue="id" />
+						<form:options items="${cates}" itemLabel="name" itemValue="id" />
+					</form:select>
+				</div>
+			</div>
+				<div class="row">
+				<div class="form-group col-sm-6">
+					<label>Thương hiệu:</label>
+					<form:select path="brand.id" class="form-control">
+						<form:options items="${brands}" itemLabel="name" itemValue="id" />
+					</form:select>
+				</div>
+				<div class="form-group col-sm-6">
+					<label>Nhà cung cấp:</label>
+					<form:select path="supplier.id" class="form-control">
+						<form:options items="${suppliers}" itemLabel="name" itemValue="id" />
 					</form:select>
 				</div>
 			</div>

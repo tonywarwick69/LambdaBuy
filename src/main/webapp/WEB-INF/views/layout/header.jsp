@@ -3,18 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
-<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}" />
+
 
 
 <header>
-	<img src="https://hoanghamobile.com/Uploads/Originals/2020/12/03/202012031548027973_xonggggg.gif" alt="" width="100%">
+	<img src="#" alt="" width="100%">
 </header>
 
 <nav id="navbar" class="navbar navbar-expand-sm navbar-dark sticky-top" >
 	<div class="container ">
 		<div class="row" style="padding: 10px 5px 6px;">
 			<div class="col-sm-4" style="margin-top: -10px; padding-left: 0px;">
-				<a href="/"><img src="/static/images/logo1.png" alt="" width="60%"></a>
+				<a href="/"><img src="/static/images/logo1.png" alt="" width="80%" height="100px"></a>
 			</div>
 			<div class="col-sm-4" style="padding-right: 15px;">
 				<div class="input-group">
@@ -38,7 +38,8 @@
 									<ul>
 										<li>
 											<i class="fa fa-shopping-cart" style="font-size: 30px"></i>
-											<p class="carts"><a href="/cart/view" style="text-decoration: none; color: #474c51">Giỏ hàng</a></p>
+											<p class="carts"><a href="/cart/view-cart-by-userid/${sessionScope.user.id}" style="text-decoration: none; color: #474c51">Giỏ hàng</a></p>
+											<!--  
 											<ul>
 												<li>
 													<div class="row">
@@ -70,8 +71,9 @@
 													</div>
 
 												</li>
-
 											</ul>
+											-->
+											<!--  
 											<div class="tong-tien">
 												<div class="row">
 													<div class="col-sm-5">
@@ -94,9 +96,11 @@
 												<br />
 												<div>
 													<a style="width: 360px" class="btn btn-primary"
-														href="/cart/view">Xem giỏ hàng</a>
+														href="/cart/view-cart-by-userid/${sessionScope.user.id}">Xem giỏ hàng</a>
 												</div>
-											</div></li>
+											</div>
+											-->
+											</li>
 									</ul>
 								</div>
 							</div>
@@ -109,7 +113,6 @@
 								<a class="splike" href="/product/favo" style="color: #474c51"> Sản phẩm đã thích</a>
 						</div>
 					</div>
-					<div class="col-sm-3" ><div class="header-menu"><i class="glyphicon glyphicon-user" style="font-size: 30px; padding: 0px 5px 0px 5x"><a href="/admin" style="color: #474c51" >Admin Page</a></i></div></div>
 				</div>
 			</div>
 		</div>
@@ -123,9 +126,8 @@
 </style>
 
 <style>
+
 .navbar{
-	
-	
 	border-bottom: 1px solid gainsboro;
 	width:100%;
 }

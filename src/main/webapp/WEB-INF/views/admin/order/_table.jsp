@@ -20,12 +20,11 @@
 								<th>Số điện thoại</th>
 								<th>Địa chỉ</th>
 								<th>Tổng tiền</th>
-
+								<th>Hình thức thanh toán</th>
 								<th>Thao tác</th>
 							</tr>
 						</thead>
 						<tbody>
-						 <a class="btn btn-success" href="/admin/order/index/export">Print</a>
 							<c:forEach var="e" items="${list}">
 								<tr class="odd gradeX">
 									<td>${e.id}</td>
@@ -36,11 +35,10 @@
 									<td>
 										<f:formatNumber value="${e.amount}" pattern="#,###" /> VNĐ
 									</td>
-
-									<td><a class="btn btn-sm btn-info" href="${base}/edit/${e.id}">Edit</a> 
-										<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a>
-										
-									</td>
+									<td>${e.payment}</td>
+									<td><a class="btn btn-sm btn-info"
+														href="${base}/edit/${e.id}">Edit</a></td>
+								
 								</tr>
 							</c:forEach>
 						</tbody>

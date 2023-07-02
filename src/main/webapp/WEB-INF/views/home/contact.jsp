@@ -50,7 +50,7 @@
                         <p> <i style="font-size: 20px;" class="fas fa-phone"></i>&nbsp; Điện thoại:
                             <span><strong style="color: red;">0964772094</strong></span>
                         </p>
-                        <p><i style="font-size: 20px" class="fas fa-house-damage"></i>&nbsp; Website: http://lambdabuy-env.eba-iqnhvsmy.ap-southeast-1.elasticbeanstalk.com/</p>
+                        <p><i style="font-size: 20px" class="fas fa-house-damage"></i>&nbsp; Website: http://lambdabuy-env.eba-ydwmhkvk.ap-southeast-1.elasticbeanstalk.com/</p>
                         <p><i style="font-size: 20px" class="fas fa-envelope-open"></i>&nbsp; Email: windmotor2022@gmail.com</p>
                         <p><i style="font-size: 20;" class="fas fa-user-edit"></i>&nbsp; Giải quyết và hướng dẫn các sự cố kỹ thuật
                         </p>
@@ -61,7 +61,7 @@
                         <h4><i class=" fas fa-user-cog "></i> DỊCH VỤ KHÁCH HÀNG</h4>
                         <p> <i style=" font-size: 20px; " class=" fas fa-phone "></i>&nbsp; Điện thoại: <a><span><strong
                     style=" color: rgb(13, 2, 162); ">0964772094</strong></span></a></p>
-                        <p><i style=" font-size: 20px " class=" fas fa-house-damage "></i>&nbsp; Website: http://lambdabuy-env.eba-iqnhvsmy.ap-southeast-1.elasticbeanstalk.com/</p>
+                        <p><i style=" font-size: 20px " class=" fas fa-house-damage "></i>&nbsp; Website: http://lambdabuy-env.eba-ydwmhkvk.ap-southeast-1.elasticbeanstalk.com/</p>
                         <p><i style=" font-size: 20px " class=" fas fa-envelope-open "></i>&nbsp; Email: windmotor2022@gmail.com</p>
                         <p><i style=" font-size: 20; " class=" fas fa-user-edit "></i>&nbsp; Các thủ tục hành chính liên quan đến dịch vụ</p>
                     </div>

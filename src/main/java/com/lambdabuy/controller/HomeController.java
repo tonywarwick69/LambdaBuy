@@ -17,7 +17,7 @@ import com.lambdabuy.entity.Product;
 public class HomeController {
 	@Autowired
 	ProductDAO pdao;
-	
+	//Mặc định khi vào trang chủ hiển thị danh sách sản phẩm gồm: theo có chương trình đặc biệt(4), Theo sản phẩm mới nhất(0)
 	@RequestMapping(value = {"/", "/home","/home/addProduct"})
 	public String index(Model model) {
 		List<Product> list2 = pdao.findBySpecial(4);
@@ -30,16 +30,17 @@ public class HomeController {
 	public String about() {
 		return "home/about";
 	}
+	//Trang liên hệ
 	@RequestMapping("/contact")
 	public String contact() {
 		return "home/contact";
 	}
-
+	//Trang hỏi đáp
 	@RequestMapping("/faq")
 	public String faq() {
 		return "home/faq";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/home/language")
 	public void language() {

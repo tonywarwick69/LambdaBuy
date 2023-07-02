@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 
-<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}" />
+
 
 <br />
 <div class="container"
@@ -26,17 +26,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="p"
-						items="${sessionScope['scopedTarget.cartService'].items}">
+					<c:forEach var="item"
+						items="${items}">
 						<tr>
-							<td>${p.id}</td>
-							<td>${p.name}</td>
-							<td><f:formatNumber value="${p.unitPrice}" pattern="#,###" />
+							<td>${item.product.id}</td>
+							<td>${item.product.name}</td>
+							<td><f:formatNumber value="${item.product.unitPrice}" pattern="#,###" />
 								VNĐ</td>
-							<td><f:formatNumber value="${p.discount}" type="percent" /></td>
-							<td>${p.quantity}</td>
+							<td><f:formatNumber value="${item.product.discount}" type="percent" /></td>
+							<td>${item.quantity}</td>
 							<td><f:formatNumber
-									value="${p.quantity * p.unitPrice * (1 - p.discount)}"
+									value="${item.quantity * item.product.unitPrice * (1 - item.product.discount)}"
 									pattern="#,###" /> VNĐ</td>
 						</tr>
 					</c:forEach>
@@ -55,15 +55,15 @@
 				</div>
 				<div class="form-group">
 					<label>Ngày đặt hàng:</label>
-					<form:input path="orderDate" class="form-control" />
+					<form:input path="orderDate" class="form-control" readonly="true" />
 				</div>
 				<div class="form-group">
 					<label>Số điện thoại:</label>
-					<form:input path="telephone" class="form-control" />
+					<form:input path="telephone" class="form-control" value="${sessionScope.user.telephone}" />
 				</div>
 				<div class="form-group">
 					<label>Địa chỉ:</label>
-					<form:input path="address" class="form-control" />
+					<form:input path="address" class="form-control" value="${shipAddress}" />
 				</div>
 				<div class="form-group">
 
@@ -72,9 +72,16 @@
 				<div class="form-group">
 					<label>Tổng tiền:</label>
 					<form:hidden path="amount" class="form-control" />
-					<div class="form-control"> <f:formatNumber value="${cart.amount}" pattern="#,###" /> VNĐ
+					<div class="form-control"> <f:formatNumber value="${totalPrice}" pattern="#,###" /> VNĐ
 					</div>
 				</div>
+				<div class="form-group">
+					<label>Chọn hình thức thanh toán:</label><br>
+					<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="payment" value="COD" checked="checked" />Trả tiền khi nhận hàng </span>
+					<span class="btn btn-success" style="padding:0px 10px 0px 10px"><form:radiobutton path="payment" value="MOMO"  /> Chuyển khoản qua MOMO </span>
+					<a href="/order/guide">Hướng dẫn chuyển khoản qua MOMO</a>
+				</div>
+				
 				<div class="form-group">
 					<label>Ghi chú:</label>
 					<form:textarea path="description" rows="3" class="form-control" />

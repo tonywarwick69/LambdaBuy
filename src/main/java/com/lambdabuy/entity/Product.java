@@ -22,29 +22,51 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String name;
-	Double unitPrice;
-	String image;
+	private Integer id;
+	
+	private String name;
+	
+	private Double unitPrice;
+	
+	private String image;
+	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	Date productDate;
-	Boolean available;
+	private Date productDate;
+	
+	private Boolean available;
 	//Integer categoryId;
-	Integer quantity;
-	String description;
-	Double discount;
-	Integer viewCount;
-	Boolean special;
+	
+	private Integer quantity;
+	
+	private String description;
+	private Double discount;
+	private Integer viewCount;
+	private Boolean special;
 	
 
 	@ManyToOne
 	@JoinColumn(name="categoryId")
-	Category category;
+	private Category category;
 	
+	@ManyToOne
+	@JoinColumn(name="brandId")
+	private Brand brand;
+	
+	@ManyToOne
+	@JoinColumn(name="supplierId")
+	private Supplier supplier;
 	
 	@OneToMany(mappedBy = "product")
-	List<OrderDetail> orderDetails;
+	private List<OrderDetail> orderDetails;
+	
+	@OneToMany(mappedBy="product")
+	private List<CartItem> cartitems;
+
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 	public Integer getId() {
@@ -176,5 +198,35 @@ public class Product {
 		this.orderDetails = orderDetails;
 	}
 	
+
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
 	
+
+	public List<CartItem> getCartitems() {
+		return cartitems;
+	}
+
+
+	public void setCartitems(List<CartItem> cartitems) {
+		this.cartitems = cartitems;
+	}
+
 }

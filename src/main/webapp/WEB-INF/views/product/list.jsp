@@ -12,11 +12,11 @@
 </style>
 	<h3 class="title">
 
-			<b>Tìm kiếm</b>
+			<b>Tìm kiếm ${keywords}</b>
 
 	</h3>
 	<c:forEach var="p" items="${list5}">
-		<div class="col-sm-3" style="padding: 5px 5px 5px 5px">
+		<div class="col-sm-4" style="padding: 5px 5px 5px 5px">
 			<div class="thumbnail">
 
 				<a href="/product/detail/${p.id}"> <c:choose>
@@ -32,7 +32,8 @@
 						<c:otherwise>
 
 						</c:otherwise>
-					</c:choose> <img style="margin-right: 30px; margin-top: 5px"
+					</c:choose> 
+					<img style="align-items:center; margin-top: 5px"
 					class="estore-prod" src="/static/images/products/${p.image}"
 					title="${p.name}">
 				</a>
@@ -72,9 +73,27 @@
 					</p>
 					<br /> <br />
 					<div data-id="${p.id}" class="pull-center text-center">
-						<button class="btn btn-sm btn-danger btn-add-to-cart">
-							<i class="glyphicon glyphicon-shopping-cart"></i>
-						</button>
+							<c:choose>
+											<c:when test="${p.available == true}">
+												<c:choose>
+													<c:when test="${empty sessionScope.user }">
+														<a class="btn btn-sm btn-danger btn-add-to-cart" href="/account/login">
+															<i class="glyphicon glyphicon-shopping-cart" ></i>
+														</a>
+													</c:when>
+													<c:otherwise>
+														<a class="btn btn-sm btn-danger btn-add-to-cart" href="/cart/add-to-cart/${p.id}" role="button" onClick="alert('Đã thêm sản phẩm vào giỏ hàng')">
+															<i class="glyphicon glyphicon-shopping-cart" ></i>
+														</a>
+													</c:otherwise>
+												</c:choose>
+											</c:when>
+											<c:otherwise>
+												<a class="btn btn-sm btn-secondary btn-add-to-cart" href="#" role="button" onClick="alert('Hết hàng')">
+															<i class="glyphicon glyphicon-shopping-cart" ></i>
+												</a>
+											</c:otherwise>
+							</c:choose>
 						<button class="btn btn-sm btn-warning btn-star">
 							<i class="glyphicon glyphicon-star"></i>
 						</button>

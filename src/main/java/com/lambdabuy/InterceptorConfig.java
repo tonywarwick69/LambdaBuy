@@ -16,7 +16,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
 	@Autowired
 	Authorizelnterceptor auth;
-
+	//Interceptors intercept requests and process them. They help to avoid repetitive handler code such as logging and authorization 
+	//Interceptors chặn requests và xử lý chúng. Interceptors giúp tránh việc phải xử lý code lặp đi lặp lại như logging và authorization
+	//các link dưới sẽ yêu cầu User login để có thể sử dụng
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(share).addPathPatterns("/**");
@@ -32,6 +34,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 				"/cart/view",
 				"/home/addProduct",
 				"/cart/add",
-				"/account/order/**");
+				"/account/order/**",
+				"/cart/add-to-cart/**");
 	}
 }

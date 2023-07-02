@@ -120,7 +120,18 @@
 							</div>
 							<div class="col-sm-8">
 								<p>
-									<form:input style="width: 90%;" path="email" class="form-control" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email không hợp lệ"/>
+									<form:input style="width: 90%;" path="email" class="form-control" required="required" readonly="true"/>
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">
+								<p>Ngày sinh:</p>
+							</div>
+							<div class="col-sm-8">
+								<p>
+									<form:input style="width: 90%;" path="birthDay" class="form-control" required="required"
+						title="dd/MM/yyyy" placeholder="dd/MM/yyyy" />
 								</p>
 							</div>
 						</div>
@@ -129,7 +140,7 @@
 							<div class="col-sm-8">
 								<form:hidden path="password" />
 								<form:hidden path="activated" />
-								<form:hidden path="admin" />
+								<form:hidden path="role" />
 								<button class="btn btn-success" style="width: 90%;">Cập nhật</button>
 							</div>
 						</div>

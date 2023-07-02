@@ -13,20 +13,25 @@ import javax.persistence.Table;
 public class OrderDetail {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	private Integer id;
 	//Integer orderId;
 	//Integer productId;
-	Double unitPrice;
-	Integer quantity;
-	Double discount;
+	private Double unitPrice;
+	private Integer quantity;
+	private Double discount;
 	
 	@ManyToOne
 	@JoinColumn(name="orderId")
-	Order order;
+	private Order order;
 	
 	@ManyToOne
 	@JoinColumn(name="productId")
-	Product product;
+	private Product product;
+
+	public OrderDetail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getId() {
 		return id;

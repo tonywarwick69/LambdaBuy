@@ -1,17 +1,20 @@
 package com.lambdabuy.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -19,24 +22,77 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User {
 	@Id
 	@NotEmpty
-	String id;
-	@NotEmpty
+	private String id;
+	
 	@Length(min=6)
-	String password;
-	@NotEmpty
-	String fullname;
-	@NotEmpty
-	String telephone;
-	@NotEmpty
-	@Email
-	String email;
-	String photo;
-	Boolean activated;
-	int admin;
+	private String password;
+	
+
+	private String fullname;
+	
+
+	
+	private int telephone;
+	
+	private String email;
+	
+	private String photo;
+	
+	private Boolean activated;
+	
+	private int role;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date birthDay;
+	
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
-	List<Order> orders;
+	private List<Order> orders;
+	
+	
+	@OneToOne(mappedBy = "user")
+	private Supplier suppliers;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Cart> carts;
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public User( String id,  String fullname,  int telephone,
+			 String email, String photo, Boolean activated, int role,Date birthDay) {
+		super();
+		this.id = id;
+		this.fullname = fullname;
+		this.telephone = telephone;
+		this.email = email;
+		this.photo = photo;
+		this.activated = activated;
+		this.role = role;
+		this.birthDay=birthDay;
+	}
+	
+
+	public User(String id,   String password, String fullname,
+			 int telephone,  String email, String photo, Boolean activated, int role,Date birthDay) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.fullname = fullname;
+		this.telephone = telephone;
+		this.email = email;
+		this.photo = photo;
+		this.activated = activated;
+		this.role = role;
+		this.birthDay=birthDay;
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -49,11 +105,15 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	/*
+	public void setPassword(String password) {
+		BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
+		this.password = passwordEncoder.encode(password);
+	}
+	*/
 	public String getFullname() {
 		return fullname;
 	}
@@ -62,11 +122,11 @@ public class User {
 		this.fullname = fullname;
 	}
 	
-	public String getTelephone() {
+	public int getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(String telephone) {
+	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
 	
@@ -94,12 +154,12 @@ public class User {
 		this.activated = activated;
 	}
 
-	public int getAdmin() {
-		return admin;
+	public int getRole() {
+		return role;
 	}
 
-	public void setAdmin(int admin) {
-		this.admin = admin;
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 	public List<Order> getOrders() {
@@ -110,6 +170,31 @@ public class User {
 		this.orders = orders;
 	}
 	
+	public Supplier getSuppliers() {
+		return suppliers;
+	}
+
+	public void setSuppliers(Supplier suppliers) {
+		this.suppliers = suppliers;
+	}
+	
+
+	public List<Cart> getCarts() {
+		return carts;
+	}
+
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
 	
 
 }

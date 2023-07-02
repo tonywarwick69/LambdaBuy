@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.lambdabuy.bean.MailInfo;
 
-
+//Cấu hình một mail khi gửi mail
 @Service
 public class MailService {
 	

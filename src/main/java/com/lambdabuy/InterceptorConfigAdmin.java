@@ -40,6 +40,8 @@ public class InterceptorConfigAdmin implements WebMvcConfigurer {
 				"/admin/report/revenue-by-customer", 
 				"/admin/report/revenue-by-month",
 				"/admin/report/revenue-by-quarter", 
-				"/admin/report/revenue-by-year");
+				"/admin/report/revenue-by-year",
+				"/admin/brand/index",
+				"/admin/supplier/index");
 	}
 }

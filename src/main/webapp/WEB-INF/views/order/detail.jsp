@@ -30,6 +30,27 @@
 					<form:input path="address" class="form-control" readonly="true" />
 				</div>
 				<div class="form-group">
+					<label>Trạng thái đơn hàng:</label>
+					
+					<c:choose>
+						<c:when test="${order.status == 1 }">
+							<form:input path="status" class="form-control" readonly="true" value="Đang xử lý" />
+						</c:when>
+						<c:when test="${order.status == 2 }">
+							<form:input path="status" class="form-control" readonly="true" value="Đã thanh toán và đang giao hàng" />
+						</c:when>
+						<c:when test="${order.status == 3 }">
+							<form:input path="status" class="form-control" readonly="true" value="Đang giao hàng" />
+						</c:when>
+						<c:when test="${order.status == 4 }">
+							<form:input path="status" class="form-control" readonly="true" value="Đã giao hàng và Thanh toán" />
+						</c:when>
+						<c:when test="${order.status == 3 }">
+							<form:input path="status" class="form-control" readonly="true" value="Hủy đơn hàng" />
+						</c:when>
+					</c:choose>
+				</div>
+				<div class="form-group">
 					<label>Tổng tiền:</label>
 					<form:input path="amount" class="form-control" readonly="true" />
 				</div>

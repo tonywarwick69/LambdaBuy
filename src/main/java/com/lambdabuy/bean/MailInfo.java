@@ -1,5 +1,6 @@
 package com.lambdabuy.bean;
-
+//Class MailInfo để tạo các thông tin người gửi(from), đến(to), Tiêu đề(cc),bcc(Blind Carbon Copy) cũng là tạo ra bản sao nhưng chỉ có tính chất tạm thời.
+//Nội dung(subject), body - để tạo form với HTML, files đính kèm (nếu có)
 public class MailInfo {
 	String  from;
 	String to;

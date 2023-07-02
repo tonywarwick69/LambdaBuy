@@ -3,6 +3,8 @@ package com.lambdabuy.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.Servlet;
@@ -12,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +31,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lambdabuy.bean.MailInfo;
+import com.lambdabuy.dao.CartDAO;
 import com.lambdabuy.dao.UserDAO;
+import com.lambdabuy.entity.Cart;
 import com.lambdabuy.entity.Order;
 import com.lambdabuy.entity.User;
 import com.lambdabuy.service.CookieService;
@@ -33,7 +41,13 @@ import com.lambdabuy.service.MailService;
 
 @Controller
 public class AccountController {
+	
+	@Autowired
+	private JdbcUserDetailsManager jdbcUserDetailsManager;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@Autowired
 	UserDAO dao;
 
@@ -51,7 +65,10 @@ public class AccountController {
 
 	@Autowired
 	HttpServletRequest request;
-
+	
+	@Autowired
+	CartDAO cdao;
+	//Lấy form Đăng nhập
 	@GetMapping("/account/login")
 	public String login(Model model) {
 		Cookie ckid = cookie.read("userid");
@@ -65,22 +82,23 @@ public class AccountController {
 		}
 		return "account/login";
 	}
-
+	//Đăng nhập
 	@PostMapping("/account/login")
 	public String login(Model model, 
 			@RequestParam("id") String id, 
 			@RequestParam("pw") String pw, @RequestParam(value = "rm", defaultValue = "false") boolean rm) { 
-		
+		//String password=bCryptPasswordEncoder.encode(pw);
 		User user = dao.findById(id); 
 		if (user == null) { 
 			model.addAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
-		} else if (!pw.equals(user.getPassword())) { 
+		} else if (bCryptPasswordEncoder.matches(pw.toString(), user.getPassword())==false) { 
+			//!pw.equals(user.getPassword())
 			model.addAttribute("message", "Sai mật khẩu!"); 
 
 			
 		} else if (!user.getActivated()) {
 			model.addAttribute("message", "Tài khoản chưa được kích hoạt!");
-		}else if (user.getAdmin()==1) {
+		}else if (user.getRole()==1) {
 			model.addAttribute("message", "Bạn không có quyền!");
 		} else {
 			model.addAttribute("message", "Đăng nhập thành công!");
@@ -105,9 +123,9 @@ public class AccountController {
 	@RequestMapping("/account/logout") 
 	public String logout(Model model) { 
 		session.removeAttribute("user");
-		return "redirect:/home";
+		return "redirect:/account/login";
 	}
-
+	//Lấy form đăng ký tài khoản
 	@GetMapping("/account/register")
 	public String register(Model model) {
 		User user = new User();
@@ -115,10 +133,9 @@ public class AccountController {
 
 		return "account/register";
 	}
-
+	//Tạo tài khoản và gửi email kích hoạt tài khoản
 	@PostMapping("/account/register")
 	public String register(Model model, @Validated @ModelAttribute("form") User user, BindingResult errors, //đọc dữ liệu từ form gửi lên
-
 			@RequestParam("photo_file") MultipartFile file)
 			throws IllegalStateException, IOException, MessagingException {
 		if (errors.hasErrors()) {
@@ -131,32 +148,39 @@ public class AccountController {
 				return "account/register";
 			}
 		}
-
+		String photo="";
 		if (file.isEmpty()) {
-			user.setPhoto("user.png");
+			//user.setPhoto("user.png");
+			photo="user.png";
 		} else {
 			String dir = app.getRealPath("/static/images/customers");
 			File f = new File(dir, file.getOriginalFilename());
 			file.transferTo(f);
-			user.setPhoto(f.getName());
+			//user.setPhoto(f.getName());
+			photo=f.getName();
 		}
-		user.setActivated(false);
-		user.setAdmin(2);
-		dao.create(user); 
+		//user.setActivated(false);
+		//user.setRole(2);
+		boolean activated= false;
+		int role=2;
+		String password= bCryptPasswordEncoder.encode(user.getPassword());
+		User user2= new User(user.getId(),password,user.getFullname(),user.getTelephone(),user.getEmail(),photo,activated,role,user.getBirthDay());
+		dao.create(user2); 
 		model.addAttribute("message", "Đăng ký thành công. Vui lòng kiểm tra mail để kích hoạt tài khoản!");
-
-
+		
+		Cart cart =new Cart("",user2);
+		cdao.create(cart);
 		String from = "windmotor2022@gmail.com";
 		String to = user.getEmail();
 		String subject = "Welcome!";
 		String url = request.getRequestURL().toString().replace("register", "activate/" + user.getId());
-		String body = "Wind Motors shop xin chào! Vui lòng nhấn vào <a href='" + url + "'>Activate</a> để kích hoạt tài khoản.";
+		String body = "Lambda Buy shop xin chào! Vui lòng nhấn vào <a href='" + url + "'>Activate</a> để kích hoạt tài khoản.";
 		MailInfo mail = new MailInfo(from, to, subject, body);
 		mailer.send(mail);
 
 		return "account/register";
 	}
-
+	//Link kích hoạt tài khoản dc gửi qua Email sau khi đăng ký thành công
 	@GetMapping("/account/activate/{id}")
 	public String activate(Model model, @PathVariable("id") String id) {
 		User user = dao.findById(id);
@@ -165,12 +189,12 @@ public class AccountController {
 
 		return "redirect:/account/login";
 	}
-
+	//Form quên mật khuẩ
 	@GetMapping("/account/forgot")
 	public String forgot(Model model) {
 		return "account/forgot";
 	}
-
+	//Chức năng gửi link lấy lại mật khẩu (Điều hướng đến /account/recover khi click vào link email)
 	@PostMapping("/account/forgot")
 	public String forgot(Model model, 
 			@RequestParam("id") String id, 
@@ -185,16 +209,19 @@ public class AccountController {
 			String from = "windmotor2022@gmail.com";
 			String to = user.getEmail();
 			String subject = "Quên mật khẩu!";
-			String body = "<a href='http://localhost:8080/account/recover'>Bấm vào đây để thiết lập mật khẩu mới</a>";//"Wind Motors shop xin chào! Mật khẩu của bạn là: " + user.getPassword();
+			String url = request.getRequestURL().toString().replace("forgot", "recover/" + user.getId());
+			//String href="http://localhost:8080/account/recover/"+id;
+			String body = "<a href="+"'"+url+"'"+">Bấm vào đây để thiết lập mật khẩu mới</a>";//"Wind Motors shop xin chào! Mật khẩu của bạn là: " + user.getPassword();
+			//"<a href='http://localhost:8080/account/recover/id'>Bấm vào đây để thiết lập mật khẩu mới</a>";//"Wind Motors shop xin chào! Mật khẩu của bạn là: " + user.getPassword();
 			MailInfo mail = new MailInfo(from, to, subject, body);
 			mailer.send(mail);
-			model.addAttribute("message", "Mật khẩu đã được gửi đến mail của bạn!");
+			model.addAttribute("message", "Link thay đổi mật khẩu đã được gửi đến mail của bạn!");
 
 			
 		}
 		return "account/forgot";
 	}
-
+	//Thay đổi mật khẩu khi đang login
 	@GetMapping("/account/change")
 	public String change(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -217,11 +244,11 @@ public class AccountController {
 			if (user == null) {
 				model.addAttribute("message", "Sai tên tài khoản hoặc mật khẩu!");
 			
-				  } else if (!pw.equals(user.getPassword())) { model.addAttribute("message",
+				  } else if (bCryptPasswordEncoder.matches(pw.toString(), user.getPassword())==false) { model.addAttribute("message",
 				 "Mật khẩu hiện tại không đúng!");
 				
 			} else {
-				user.setPassword(pw1);
+				user.setPassword(bCryptPasswordEncoder.encode(pw1));
 				dao.update(user);
 
 				model.addAttribute("message", "Thay đổi mật khẩu thành công!");
@@ -229,10 +256,11 @@ public class AccountController {
 		}
 		return "account/change";
 	}
-
-	@GetMapping("/account/recover")
-	public String recover(Model model) {
+	//Form và chức năng lấy lại mật khẩu khi quên mật khẩu dc gửi link qua email
+	@GetMapping("/account/recover/{id}")
+	public String recover(Model model,@PathVariable("id") String id) {
 		User user = (User) session.getAttribute("user");
+		//model.addAttribute(id, "id");
 		model.addAttribute("form", user);
 
 		return "account/recover";
@@ -253,7 +281,7 @@ public class AccountController {
 			}else if (pw1.isEmpty() && pw2.isEmpty()) {
 				model.addAttribute("message", "Vui lòng điền thông tin mật khẩu mới!");
 			}else {
-				user.setPassword(pw1);
+				user.setPassword(bCryptPasswordEncoder.encode(pw1));
 				dao.update(user);
 
 				model.addAttribute("message", "Thay đổi mật khẩu thành công!");
@@ -261,7 +289,7 @@ public class AccountController {
 		}
 		return "account/recover";
 	}
-	
+	//Form và chức năng thay đổi thông tin cá nhân
 	@GetMapping("/account/edit")
 	public String edit(Model model) {
 		User user = (User) session.getAttribute("user");

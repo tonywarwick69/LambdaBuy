@@ -15,6 +15,7 @@
                   <li data-target="#myCarousel" data-slide-to="1" ></li>
                   <li data-target="#myCarousel" data-slide-to="2"></li>
                   <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
                 </ul>
               
 				<div class="carousel-inner">
@@ -29,6 +30,9 @@
 					</div>
 					<div class="item">
 						<img src="/static/images/slideshow/slide4.jpg" alt="3" width="100%" height="342px">
+					</div>
+					<div class="item">
+						<img src="/static/images/slideshow/slide5.jpg" alt="3" width="100%" height="342px">
 					</div>
 					 <!-- Left and right controls -->
 					    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -78,7 +82,7 @@
 			<a href="/product/list-by-new/0" style="color: #fff; text-decoration: none;"> Xem tất cả</a></span>
 		</div>
 		<div class="row"
-			style="padding: 20px; margin-top: -10px; height: 930px">
+			style="padding: 20px; margin-top: -10px; height: 1500px; overflow: auto;" >
 			<jsp:include page="../product/list-by-new.jsp" />
 		</div>
 	</div>
@@ -105,7 +109,9 @@
 html, body, .container, .main {
 	height: 100%;
 }
-
+.gia-soc{
+	overflow:scroll;
+}
 /* main wrapper */
 .btn-change {
 	width: 30px;

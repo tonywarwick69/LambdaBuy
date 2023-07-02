@@ -9,11 +9,11 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.estore</groupId>
-	<artifactId>WindMotors</artifactId>
+	<groupId>com.lambdabuy</groupId>
+	<artifactId>LambdaBuy</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>estore</name>
+	<name>LambdaBuy</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -39,13 +39,7 @@
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
-		    <scope>provided</scope>
-		</dependency>
+	
 	  <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
@@ -100,13 +94,6 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>5.2.2</version>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
-		<dependency>
-		    <groupId>com.squareup.retrofit2</groupId>
-		    <artifactId>converter-gson</artifactId>
-		    <version>2.9.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
 	<dependency>
 	    <groupId>com.squareup.retrofit2</groupId>
 	    <artifactId>retrofit</artifactId>
@@ -136,6 +123,29 @@
 		    <artifactId>gson</artifactId>
 		    <version>2.9.1</version>
 		</dependency>
+			<!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+		<dependency>
+		    <groupId>com.toedter</groupId>
+		    <artifactId>jcalendar</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>	
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		  <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+    </dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

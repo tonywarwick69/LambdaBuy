@@ -78,6 +78,7 @@
 								<th>Mã đơn hàng</th>
 								<th>Ngày mua</th>
 								<th>Địa chỉ</th>
+								<th>Trạng thái</th>
 								<th>Tổng tiền</th>
 								<th></th>
 							</tr>
@@ -89,10 +90,31 @@
 									<td><fmt:formatDate type="both" dateStyle="short"
 											timeStyle="short" value="${o.orderDate}" /></td>
 									<td>${o.address }</td>
+									<c:choose>
+										<c:when test="${o.status ==1}">
+											<td>Đang xử lý</td>
+										</c:when>
+										<c:when test="${o.status ==2}">
+											<td>Đã thanh toán</td>
+										</c:when>
+										<c:when test="${o.status ==3}">
+											<td>Đang giao hàng</td>
+										</c:when>
+										<c:when test="${o.status ==4}">
+											<td>Đã giao hàng và Thanh toán</td>
+										</c:when>
+										<c:when test="${o.status ==5}">
+											<td>Hủy đơn hàng</td>
+										</c:when>
+									</c:choose>
+									
 									<td><f:formatNumber value="${o.amount}" pattern="#,###" />
 										VNĐ</td>
 									<td><a href="/order/detail/${o.id}"
 										class="btn btn-sm btn-warning"> Chi tiết </a></td>
+										<td><a href="/order/cancel/${o.id}"
+										class="btn btn-sm btn-danger"
+										onClick='alert("Đã gửi yêu cầu hủy đơn hàng!")'> Hủy đơn hàng </a></td>
 								</tr>
 							</c:forEach>
 

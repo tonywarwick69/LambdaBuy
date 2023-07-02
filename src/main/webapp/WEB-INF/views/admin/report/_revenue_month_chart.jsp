@@ -10,9 +10,9 @@
 
       function drawChart() {
           var data = google.visualization.arrayToDataTable([
-        	  ['Khach hang', 'Doanh thu'],
+        	  ['Thang ', 'Doanh thu'],
               <c:forEach var="e" items="${data}">       
-              ['${e[0]}',    ${e[2]}],
+              ['Thang: ${e[0]} Nam: ${e[1]}'  ,${e[3]}],
               </c:forEach>
           ]);
 

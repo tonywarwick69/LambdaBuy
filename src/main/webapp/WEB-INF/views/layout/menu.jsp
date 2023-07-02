@@ -60,10 +60,12 @@
 -->
 <style type="text/css">
   .nav-item {
-    width: 200px;
+    width: 240px;
     text-align: center;
     font-weight: bold;
     color: white;
+
+    
   }
 
   .nav-item:hover {
@@ -74,7 +76,7 @@
     background-color: #0047AB;
   }
   .container-fluid{
-  
+  	
   }
 </style>
 <nav
@@ -125,7 +127,10 @@
             <ul class="dropdown-menu">
               <li><a href="/account/login">Đăng nhập</a></li>
               <li><a href="/account/register">Đăng ký</a></li>
+              <li><a href="/supplier/register">Đăng ký trở thành Người bán trên LambdaBuy</a></li>
               <li><a href="/account/forgot">Quên mật khẩu?</a></li>
+              <li><a href="/admin/login">Trang quản lý LambdaBuy</a></li>
+              <li><a href="/supplier/login">Trang nhà bán hàng</a></li>
             </ul>
           </c:when>
           <c:otherwise>
@@ -162,7 +167,7 @@
     margin-top: -20px;">
   <c:forEach var="c" items="${cates}">
     <a class="list-group-item" href="/product/list-by-categorys/${c.id}">
-      <img src="/static/images/icon/4.png" />${c.nameVN}
+      <img src="/static/images/icon/4.png" />${c.name}
     </a>
   </c:forEach>
 </div>

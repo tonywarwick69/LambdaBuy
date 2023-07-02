@@ -77,6 +77,8 @@ public class UserDAOImpl implements UserDAO{
 		List<User> list=query.getResultList();
 		return list;
 	}
+
+	
 	
 
 }

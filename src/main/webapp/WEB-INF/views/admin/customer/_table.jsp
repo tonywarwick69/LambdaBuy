@@ -19,6 +19,7 @@
 								<th>Email</th>
 								<th>Kích hoạt</th>
 								<th>Quyền</th>
+								<th>Ngày sinh</th>
 								<th>Thao tác</th>
 							</tr>
 						</thead>
@@ -30,9 +31,11 @@
 									<td>${e.telephone}</td>
 									<td>${e.email}</td>
 									<td>${e.activated?'Yes':'No'}</td>
-									<td>${e.admin?'Admin':'User'}</td>
+									<td>${e.role}</td>
+									<td>${e.birthDay}</td>
 									<td><a class="btn btn-sm btn-info" href="${base}/edit/${e.id}">Edit</a> 
-									<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a>
+									<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}" style="display:none;">Delete</a>
+									<a class="btn btn-sm btn-danger" href="${base}/deactivate/${e.id}">Vô hiệu hóa</a>
 									</td>
 								</tr>
 							</c:forEach>

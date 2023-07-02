@@ -17,12 +17,15 @@ import javax.persistence.Table;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String name;
-	String nameVN;
-	
+	private Integer id;
+	private String name;
 	@OneToMany(mappedBy="category")
-	List<Product> products;
+	private List<Product> products;
+
+	public Category() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getId() {
 		return id;
@@ -38,14 +41,6 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getNameVN() {
-		return nameVN;
-	}
-
-	public void setNameVN(String nameVN) {
-		this.nameVN = nameVN;
 	}
 
 	public List<Product> getProducts() {
